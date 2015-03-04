@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    android:alpha="0.8"
+    app:cardUseCompatPadding="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/insta_feed_user_image_view"
+                android:src="@drawable/ic_launcher"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="80dp" />
+
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:id="@+id/insta_feed_username_text_view"
+                android:padding="10dp"
+                tools:text="TEST TEXT"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/insta_feed_progress_bar"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/insta_feed_image_view"
+            android:src="@drawable/ic_launcher_bw"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="italic"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:gravity="start|left|center_vertical"
+            android:textColor="@color/black"
+            android:id="@+id/insta_feed_title_text_view"
+            android:padding="10dp"
+            tools:text="TEST TEXT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start|left|center_vertical"
+            android:drawableLeft="@drawable/ic_likes"
+            android:drawableStart="@drawable/ic_likes"
+            android:textSize="15sp"
+            android:textColor="#7f8c8d"
+            android:id="@+id/insta_feed_likes_text_view"
+            android:padding="6dp"
+            tools:text="TEST TEXT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start|left|center_vertical"
+            android:drawableLeft="@drawable/ic_comments"
+            android:drawableStart="@drawable/ic_comments"
+            android:textSize="15sp"
+            android:textColor="#7f8c8d"
+            android:id="@+id/insta_feed_comments_text_view"
+            android:padding="6dp"
+            tools:text="TEST TEXT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

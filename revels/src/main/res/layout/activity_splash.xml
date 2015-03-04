@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/teal_primary"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginLeft="100dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/animation_images"
+        android:layout_width="250dp"
+        android:layout_height="250dp">
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/das6_image"
+            android:src="@drawable/das6"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/das5_image"
+            android:src="@drawable/das5"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/das4_image"
+            android:src="@drawable/das4"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:src="@drawable/das3"
+            android:id="@+id/das3_image"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/das2_image"
+            android:src="@drawable/das2"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/das1_image"
+            android:src="@drawable/das1"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/volatus_image"
+            android:src="@drawable/volatus"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/revels_image"
+        android:src="@drawable/revels"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingBottom="16dp"
+        android:contentDescription="@string/app_name" />
+</RelativeLayout>

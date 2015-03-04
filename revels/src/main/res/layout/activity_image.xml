@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/image_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/app_name" />
+
+    <LinearLayout
+        android:id="@+id/image_data_linear_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:padding="6dp"
+            android:id="@+id/image_user_text_view"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6" />
+
+        <TextView
+            android:id="@+id/image_like_text_view"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:padding="6dp"
+            android:fontFamily="sans-serif-condensed"
+            android:drawableLeft="@drawable/ic_like_white"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
+
+        <TextView
+            android:padding="6dp"
+            android:id="@+id/image_comment_text_view"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-condensed"
+            android:drawableLeft="@drawable/ic_comment_white"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@drawable/bg1"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:id="@+id/dev_revels_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/revels"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:padding="6dp"
+        android:src="@drawable/tanay"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tan_image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/man_image"
+        android:padding="6dp"
+        android:layout_above="@id/dev_revels_image_view"
+        android:layout_alignLeft="@id/dev_revels_image_view"
+        android:src="@drawable/manish"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/sak_image"
+        android:padding="6dp"
+        android:layout_above="@id/dev_revels_image_view"
+        android:layout_alignRight="@id/dev_revels_image_view"
+        android:src="@drawable/saksham"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/kar_image"
+        android:padding="6dp"
+        android:src="@drawable/kartik"
+        android:layout_below="@id/dev_revels_image_view"
+        android:layout_alignLeft="@id/dev_revels_image_view"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/shub_image"
+        android:padding="6dp"
+        android:layout_below="@id/dev_revels_image_view"
+        android:layout_alignRight="@id/dev_revels_image_view"
+        android:src="@drawable/shubham"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/sam_image"
+        android:padding="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/samarth"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/app_name" />
+
+</RelativeLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/event_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <com.nirhart.parallaxscroll.views.ParallaxListView
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:scrollbarThumbVertical="@drawable/scroll_color_teal"
+        android:visibility="gone"
+        android:divider="@android:color/transparent"
+        android:id="@+id/event_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/button_linear_layout"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:background="@color/teal_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="@string/day_one"
+            android:textColor="@color/white"
+            android:id="@+id/day_one_button"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="@string/day_two"
+            android:textColor="@color/white"
+            android:id="@+id/day_two_button"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="@string/day_three"
+            android:textColor="@color/white"
+            android:id="@+id/day_three_button"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="@string/day_four"
+            android:textColor="@color/white"
+            android:id="@+id/day_four_button"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/no_events_today_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textColor="@color/teal_primary"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="25sp"
+        android:text="@string/no_events_on_this_day" />
+</RelativeLayout>

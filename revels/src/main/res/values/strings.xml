@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Revels\'15</string>
+    <string name="action_nav">Navigation</string>
+    <string name="action_instagram">InstaFeed</string>
+    <string name="title_insta_feed_activity">#revels15</string>
+    <string name="no_connection_one">Oops! Could not fetch content!</string>
+    <string name="title_results_activity">Results</string>
+    <string name="day_one">DAY 1</string>
+    <string name="day_two">DAY 2</string>
+    <string name="day_three">DAY 3</string>
+    <string name="day_four">DAY 4</string>
+    <string name="text_follow">Follow Event</string>
+    <string name="text_retry">Retry</string>
+    <string name="cont">Tap To Continue</string>
+    <string name="app_setup">Please wait while the app is being set up!</string>
+    <string name="app_setuped">Everything\'s ready!</string>
+    <string name="no_events">No events followed!</string>
+    <string name="title_activity_following">Following</string>
+    <string name="try_again">Seems like a network issue\nPlease try again in sometime!</string>
+    <string name="title_activity_developer">The Devs</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="team_lead">Team Lead</string>
+    <string name="tanay">Tanay Agrawal</string>
+    <string name="backend"><![CDATA[Backend & API]]></string>
+    <string name="manish">Manish Shetty</string>
+    <string name="graphics">Graphics</string>
+    <string name="samarth">Samarth Jain</string>
+    <string name="android">Android Developer</string>
+    <string name="kartik">Kartik Arora</string>
+    <string name="iOS">iOS Developer</string>
+    <string name="shubham">Shubham Sorte</string>
+    <string name="winphone">Windows Phone Developer</string>
+    <string name="saksham">Saksham Khanna</string>
+    <string name="title_activity_web_view">Register</string>
+    <string name="title_activity_lug">LUG Manipal</string>
+    <string name="lug_manipal">LUG Manipal</string>
+    <string name="shake">Shake to go back</string>
+    <string name="no_events_on_this_day">No events on this day!</string>
+    <string name="title_activity_contact">Contact Us</string>
+    <string name="sanika">Sanika Kapale</string>
+    <string name="sports_sec">Sports Secretary</string>
+    <string name="ravi">Ravi Shankar</string>
+    <string name="cul_sec">Cultural Secretary</string>
+    <string name="satyam">Satyam Sinha</string>
+    <string name="aditi">Aditi Lath</string>
+    <string name="action_following">Following</string>
+    <string name="action_results">Results</string>
+    <string name="action_register">Register</string>
+    <string name="action_contact">Contact Us</string>
+    <string name="action_devs">Developers</string>
+    <string name="no_results">No results yet!</string>
+</resources>
