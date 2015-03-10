@@ -7,20 +7,25 @@ package chipset.revels.activities;
  * Date : 03/02/15
  */
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.squareup.seismic.ShakeDetector;
 
 import chipset.revels.R;
 import chipset.revels.resources.Constants;
 
 public class DeveloperActivity extends ActionBarActivity {
-    //    Vibrator vibrator;
-//    ShakeDetector shakeDetector;
-//    SensorManager sensorManager;
-//    ShakeDetector.Listener listener;
+    Vibrator vibrator;
+    ShakeDetector shakeDetector;
+    SensorManager sensorManager;
+    ShakeDetector.Listener listener;
     ImageView tanayImageView, manishImageView, sakshamImageView, kartikImageView, shubhamImageView, samarthImageView;
 
     @Override
@@ -79,27 +84,27 @@ public class DeveloperActivity extends ActionBarActivity {
         });
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//
-//        listener = new ShakeDetector.Listener() {
-//            @Override
-//            public void hearShake() {
-//                startActivity(new Intent(DeveloperActivity.this, LUGActivity.class));
-//                vibrator.vibrate(500);
-//
-//            }
-//        };
-//        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-//        shakeDetector = new ShakeDetector(listener);
-//        shakeDetector.start(sensorManager);
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        shakeDetector.stop();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        listener = new ShakeDetector.Listener() {
+            @Override
+            public void hearShake() {
+                startActivity(new Intent(DeveloperActivity.this, LUGActivity.class));
+                vibrator.vibrate(1000);
+
+            }
+        };
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        shakeDetector = new ShakeDetector(listener);
+        shakeDetector.start(sensorManager);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        shakeDetector.stop();
+    }
 }

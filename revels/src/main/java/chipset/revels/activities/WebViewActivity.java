@@ -9,27 +9,29 @@ package chipset.revels.activities;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import chipset.revels.R;
-import chipset.revels.resources.Constants;
 
 public class WebViewActivity extends ActionBarActivity {
     WebView registerView;
     ProgressDialog pDialog;
+    String mURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setElevation(0f);
+        mURL = getIntent().getStringExtra("URL");
         loadWebView();
-
     }
 
 
@@ -86,6 +88,12 @@ public class WebViewActivity extends ActionBarActivity {
         pDialog.setMessage("Loading...");
         pDialog.setTitle("Please Wait");
         pDialog.setIndeterminate(true);
+        pDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
 
         registerView = (WebView) findViewById(R.id.registerView);
         registerView.setWebViewClient(new MyBrowser());
@@ -94,6 +102,7 @@ public class WebViewActivity extends ActionBarActivity {
         registerView.getSettings().setAllowFileAccess(true);
         registerView.getSettings().setBuiltInZoomControls(true);
         registerView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        registerView.loadUrl(Constants.URL_REG);
+        Log.i("mURL", mURL);
+        registerView.loadUrl(mURL);
     }
 }

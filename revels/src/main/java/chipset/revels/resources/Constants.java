@@ -26,7 +26,8 @@ public class Constants {
     public static String SUBTITLE = "subtitle";
     public static String IMG = "img";
 
-    public static String URL_REG = "http://mitrevels.in/registration/";
+    public static String URL_REG_SPO = "http://mitrevels.in/register/sports/index.php";
+    public static String URL_REG_CUL = "http://mitrevels.in/register/cultural/index.php";
     public static String URL_LUG_FB = "https://www.facebook.com/LUGManipal";
     public static String URL_LUG_GITHUB = "https://github.com/LUGM/";
 }

@@ -2,7 +2,10 @@ package chipset.revels.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -70,6 +73,7 @@ public class EventsInCategoryFragment extends Fragment {
     ViewGroup container;
     ImageView imageView;
     TextView textView;
+    ActionBar mActionBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,6 +107,12 @@ public class EventsInCategoryFragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mActionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
+    }
+
+    @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -122,12 +132,14 @@ public class EventsInCategoryFragment extends Fragment {
                                 mButtonLinearLayout.setVisibility(View.VISIBLE);
                                 mButtonLinearLayout.startAnimation(animUp);
                                 isUp = true;
+                                mActionBar.hide();
                             }
                         } else {
                             if (isUp) {
                                 mButtonLinearLayout.setVisibility(View.GONE);
                                 mButtonLinearLayout.startAnimation(animDown);
                                 isUp = false;
+                                mActionBar.show();
                             }
                         }
                     }

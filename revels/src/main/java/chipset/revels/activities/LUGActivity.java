@@ -50,7 +50,7 @@ public class LUGActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(500);
+        vibrator.vibrate(1000);
 
         listener = new ShakeDetector.Listener() {
             @Override

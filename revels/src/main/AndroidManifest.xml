@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -52,7 +53,11 @@
         <activity
             android:name=".activities.ImageActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreenTheme" />
+            android:theme="@style/ImageTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.InstaFeedActivity" />
+        </activity>
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -86,6 +91,16 @@
                 android:value="chipset.revels.activities.MainActivity" />
         </activity>
         <activity
+            android:name=".activities.LUGActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/LUGTheme"
+            android:label="@string/title_activity_lug"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="chipset.revels.activities.MainActivity" />
+        </activity>
+        <activity
             android:name=".activities.ContactActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_contact">
@@ -93,6 +108,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="chipset.revels.activities.MainActivity" />
         </activity>
+
         <meta-data
             android:name="com.crashlytics.ApiKey"
             android:value="92dd36c7ef95c5cec0634255708f51d2b1851bf8" />

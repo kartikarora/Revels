@@ -15,9 +15,13 @@
         app:showAsAction="never"
         android:title="@string/action_results" />
     <item
-        android:id="@+id/action_register"
+        android:id="@+id/action_register_cultural"
         app:showAsAction="never"
-        android:title="@string/action_register" />
+        android:title="@string/action_register_cultural" />
+    <item
+        android:id="@+id/action_register_sports"
+        app:showAsAction="never"
+        android:title="@string/action_register_sports" />
     <item
         android:id="@+id/action_contact"
         app:showAsAction="never"

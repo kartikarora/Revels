@@ -9,6 +9,7 @@ package chipset.revels.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
@@ -50,10 +51,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+
     public void loadMain() {
         setContentView(R.layout.activity_main);
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP)
+            mSlidingTabLayout.setElevation(10f);
         progressBar = (ProgressBar) findViewById(R.id.main_progress_bar);
 
         APIClient.getRevels().getCategory(new Callback<Category>() {
@@ -142,8 +146,12 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(MainActivity.this, ResultsActivity.class));
                 break;
             }
-            case R.id.action_register: {
-                startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+            case R.id.action_register_cultural: {
+                startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_REG_CUL));
+                break;
+            }
+            case R.id.action_register_sports: {
+                startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_REG_SPO));
                 break;
             }
             case R.id.action_contact: {

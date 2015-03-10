@@ -33,6 +33,7 @@ public class InstaFeedActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setElevation(0f);
         loadInstaFeed();
     }
 
@@ -44,7 +45,7 @@ public class InstaFeedActivity extends ActionBarActivity {
         progressBar = (ProgressBar) findViewById(R.id.insta_feed_progress_bar);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.insta_feed_swipe_refresh);
 
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.teal_primary,R.color.teal_primary_dark);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.teal_primary, R.color.teal_primary_dark);
 
         APIClient.getInstagram().getFeed(new Callback<InstaFeed>() {
             @Override
