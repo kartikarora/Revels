@@ -68,32 +68,35 @@ public class InstaFeedListAdapter extends BaseAdapter {
 
         final ViewHolder viewHolder = (ViewHolder) convertView.getTag();
         final InstagramDatum instagramDatum = getItem(position);
-        viewHolder.instaFeedUsernameTextView.setText("@" + instagramDatum.getUser().getUsername());
-        Picasso.with(context).load(instagramDatum.getUser().getProfilePicture()).into(viewHolder.instaFeedUserImageView);
-        viewHolder.instaFeedTitleTextView.setText(instagramDatum.getCaption().getText());
-        viewHolder.instaFeedLikesTextView.setText("Likes: " + instagramDatum.getLikes().getCount());
-        viewHolder.instaFeedCommentsTextView.setText("Comments: " + instagramDatum.getComments().getCount());
-        Picasso.with(context).load(instagramDatum.getImages().getStandardResolution().getUrl()).into(viewHolder.instaFeedImageView, new Callback() {
-            @Override
-            public void onSuccess() {
-                viewHolder.instaFeedProgressBar.setVisibility(View.GONE);
-                viewHolder.instaFeedImageView.setVisibility(View.VISIBLE);
-            }
+        try {
+            viewHolder.instaFeedUsernameTextView.setText("@" + instagramDatum.getUser().getUsername());
+            Picasso.with(context).load(instagramDatum.getUser().getProfilePicture()).into(viewHolder.instaFeedUserImageView);
+            viewHolder.instaFeedTitleTextView.setText(instagramDatum.getCaption().getText());
+            viewHolder.instaFeedLikesTextView.setText("Likes: " + instagramDatum.getLikes().getCount());
+            viewHolder.instaFeedCommentsTextView.setText("Comments: " + instagramDatum.getComments().getCount());
+            Picasso.with(context).load(instagramDatum.getImages().getStandardResolution().getUrl()).into(viewHolder.instaFeedImageView, new Callback() {
+                @Override
+                public void onSuccess() {
+                    viewHolder.instaFeedProgressBar.setVisibility(View.GONE);
+                    viewHolder.instaFeedImageView.setVisibility(View.VISIBLE);
+                }
 
-            @Override
-            public void onError() {
+                @Override
+                public void onError() {
 
-            }
-        });
+                }
+            });
 
-        viewHolder.instaFeedImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, ImageActivity.class)
-                        .putExtra(Constants.INSTA_DATA, new Gson().toJson(instagramDatum)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            }
-        });
-
+            viewHolder.instaFeedImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, ImageActivity.class)
+                            .putExtra(Constants.INSTA_DATA, new Gson().toJson(instagramDatum)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return convertView;
     }
 

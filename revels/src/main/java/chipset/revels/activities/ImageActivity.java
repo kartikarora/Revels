@@ -1,12 +1,14 @@
 package chipset.revels.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -44,6 +46,7 @@ public class ImageActivity extends ActionBarActivity {
     boolean isVisible = true;
     ImageView mImageView;
     static int count = 1;
+    boolean f = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,46 +111,62 @@ public class ImageActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_save_image) {
-            Log.i("ITEM", "CALLED");
+            File file = getImageBitmap();
             ProgressDialog dialog = new ProgressDialog(ImageActivity.this);
             dialog.setMessage("Please Wait");
             dialog.setIndeterminate(true);
             dialog.show();
-            mImageView.setDrawingCacheEnabled(true);
-            Bitmap bitmap = mImageView.getDrawingCache();
-            OutputStream output;
-            File filepath = Environment.getExternalStorageDirectory();
-            File dir = new File(filepath.getAbsolutePath()
-                    + "/Pictures/Revels15/");
-            dir.mkdirs();
-            count = Potato.potate().getPreferences().getSharedPreferenceInteger(getApplicationContext(), "COUNT");
-            File file = new File(dir, "IMG_INSTA_" + String.valueOf(count) + ".png");
-            try {
-                output = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
-                output.flush();
-                output.close();
+            MediaScannerConnection.scanFile(ImageActivity.this,
+                    new String[]{file.getAbsolutePath()}, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i("TAG", "Finished scanning " + path);
+                        }
+                    });
+            if (f) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Image Saved", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
                 Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), "COUNT", ++count);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Couldn\'t Save Image ", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
-            } finally {
-                MediaScannerConnection.scanFile(ImageActivity.this,
-                        new String[]{file.getAbsolutePath()}, null,
-                        new MediaScannerConnection.OnScanCompletedListener() {
-
-                            public void onScanCompleted(String path, Uri uri) {
-                                Log.i("TAG", "Finished scanning " + path);
-                            }
-                        });
-                dialog.cancel();
             }
+            dialog.cancel();
+        } else if (item.getItemId() == R.id.action_image_share) {
+            File file = getImageBitmap();
+            Uri uri = Uri.fromFile(file);
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_STREAM,uri);
+            sendIntent.setType("image/*");
+            startActivity(Intent.createChooser(sendIntent, "Share Image"));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private File getImageBitmap() {
+        mImageView.setDrawingCacheEnabled(true);
+        Bitmap bitmap = mImageView.getDrawingCache();
+        File filepath = Environment.getExternalStorageDirectory();
+        File dir = new File(filepath.getAbsolutePath()
+                + "/Pictures/Revels15/");
+        dir.mkdirs();
+        count = Potato.potate().getPreferences().getSharedPreferenceInteger(getApplicationContext(), "COUNT");
+        File file = new File(dir, "IMG_INSTA_" + String.valueOf(count) + ".png");
+        OutputStream output;
+        try {
+            output = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
+            output.flush();
+            output.close();
+            f = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            f = false;
+        }
+        return file;
     }
 }

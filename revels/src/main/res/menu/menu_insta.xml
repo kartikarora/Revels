@@ -6,4 +6,9 @@
         android:title="@string/action_image_save"
         app:showAsAction="always"
         android:id="@+id/action_save_image" />
+    <item
+        android:id="@+id/action_image_share"
+        app:showAsAction="always"
+        android:title="@string/action_image_share"
+        android:icon="@drawable/ic_action_share_image" />
 </menu>
