@@ -13,6 +13,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -21,7 +22,7 @@ import com.squareup.seismic.ShakeDetector;
 import chipset.revels.R;
 import chipset.revels.resources.Constants;
 
-public class DeveloperActivity extends ActionBarActivity {
+public class DeveloperActivity extends AppCompatActivity {
     Vibrator vibrator;
     ShakeDetector shakeDetector;
     SensorManager sensorManager;

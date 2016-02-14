@@ -14,7 +14,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +36,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     ViewPager mViewPager;
     SlidingTabLayout mSlidingTabLayout;
@@ -46,6 +47,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0f);
         loadMain();
     }
@@ -66,14 +69,14 @@ public class MainActivity extends ActionBarActivity {
             public void success(Category category, Response response) {
                 setCategory(category);
                 progressBar.setVisibility(View.GONE);
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.CATEG, new Gson().toJson(category));
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.CATEG, new Gson().toJson(category));
             }
 
             @Override
             public void failure(RetrofitError error) {
                 progressBar.setVisibility(View.GONE);
-                if (!Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)) {
-                    Category category = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getApplicationContext(), Constants.CATEG), Category.class);
+                if (!Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceBoolean(Constants.FIRST_RUN)) {
+                    Category category = new Gson().fromJson(Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceString(Constants.CATEG), Category.class);
                     setCategory(category);
                 } else {
                     setContentView(R.layout.no_connection_layout);

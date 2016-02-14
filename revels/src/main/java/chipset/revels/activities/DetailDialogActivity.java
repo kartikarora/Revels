@@ -1,7 +1,7 @@
 package chipset.revels.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -22,7 +22,7 @@ import chipset.revels.resources.Constants;
  * Project : Revels
  * Date : 19/1/15
  */
-public class DetailDialogActivity extends ActionBarActivity {
+public class DetailDialogActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class DetailDialogActivity extends ActionBarActivity {
         TextView eventNameDialogTextView = (TextView) findViewById(R.id.event_name_dialog_text_view);
         CheckBox eventFollowCheckBox = (CheckBox) findViewById(R.id.event_follow_checkbox);
 
-        final Event followingEvent = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getApplicationContext(), Constants.FOLLOWING), Event.class);
+        final Event followingEvent = new Gson().fromJson(Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceString(Constants.FOLLOWING), Event.class);
         final EventDatum eventDatum = new Gson().fromJson(getIntent().getStringExtra(Constants.EVENT_DATA), EventDatum.class);
 
         eventDetailDialogTextView.setText(eventDatum.getDescription());
@@ -52,7 +52,7 @@ public class DetailDialogActivity extends ActionBarActivity {
                 if (isChecked) {
                     followingEvent.getData().add(eventDatum);
                     followingEvent.setCount(followingEvent.getCount() + 1);
-                    Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.FOLLOWING, new Gson().toJson(followingEvent));
+                    Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.FOLLOWING, new Gson().toJson(followingEvent));
                     Toast t = Toast.makeText(getApplicationContext(), eventDatum.getEvent() + " added to following list", Toast.LENGTH_SHORT);
                     t.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0);
                     t.show();
@@ -61,7 +61,7 @@ public class DetailDialogActivity extends ActionBarActivity {
                         if (eventDatum.getEvent().equals(followingEvent.getData().get(i).getEvent())) {
                             followingEvent.getData().remove(i);
                             followingEvent.setCount(followingEvent.getCount() - 1);
-                            Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.FOLLOWING, new Gson().toJson(followingEvent));
+                            Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.FOLLOWING, new Gson().toJson(followingEvent));
                             break;
                         }
                     }

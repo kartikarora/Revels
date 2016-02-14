@@ -2,7 +2,8 @@ package chipset.revels.activities;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
@@ -24,7 +25,7 @@ import retrofit.client.Response;
  * Date : 19/1/15
  */
 
-public class ResultsActivity extends ActionBarActivity {
+public class ResultsActivity extends AppCompatActivity {
     ListView resultsListView;
     ProgressBar progressBar;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -32,13 +33,14 @@ public class ResultsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_results);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0f);
         loadResults();
     }
 
     public void loadResults() {
-
-        setContentView(R.layout.activity_results);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         resultsListView = (ListView) findViewById(R.id.results_list_view);

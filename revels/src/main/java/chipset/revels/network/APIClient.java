@@ -59,7 +59,7 @@ public class APIClient {
     }
 
     public interface InstaFeedInterface {
-        @GET(INSTA_API_ENDPOINT)
+        @GET("/v1/tags/techtatva15/media/recent?client_id=fd6b3100174e42d7aa7d546574e01c76")
         void getFeed(Callback<InstaFeed> instaFeedCallback);
     }
 }

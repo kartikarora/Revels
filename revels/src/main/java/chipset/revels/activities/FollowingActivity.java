@@ -2,7 +2,8 @@ package chipset.revels.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,7 +23,7 @@ import chipset.revels.resources.Constants;
  * Date : 25/1/15
  */
 
-public class FollowingActivity extends ActionBarActivity {
+public class FollowingActivity extends AppCompatActivity {
     int position;
     CategoryListAdapter adapter;
 
@@ -30,6 +31,8 @@ public class FollowingActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_following);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0f);
     }
 
@@ -37,7 +40,7 @@ public class FollowingActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         ListView followingListView = (ListView) findViewById(R.id.following_list_view);
-        final Event event = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getApplicationContext(), Constants.FOLLOWING), Event.class);
+        final Event event = new Gson().fromJson(Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceString(Constants.FOLLOWING), Event.class);
         if (event.getCount() == 0) {
             setContentView(R.layout.no_followed_events);
         } else {

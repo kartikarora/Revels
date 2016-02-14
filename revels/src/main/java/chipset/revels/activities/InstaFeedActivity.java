@@ -2,7 +2,8 @@ package chipset.revels.activities;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
@@ -24,7 +25,7 @@ import retrofit.client.Response;
  * Date : 18/1/14
  */
 
-public class InstaFeedActivity extends ActionBarActivity {
+public class InstaFeedActivity extends AppCompatActivity {
 
     ListView instaFeedListView;
     ProgressBar progressBar;
@@ -33,12 +34,15 @@ public class InstaFeedActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_insta_feed);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0f);
         loadInstaFeed();
     }
 
     public void loadInstaFeed() {
-        setContentView(R.layout.activity_insta_feed);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         instaFeedListView = (ListView) findViewById(R.id.insta_feed_list_view);

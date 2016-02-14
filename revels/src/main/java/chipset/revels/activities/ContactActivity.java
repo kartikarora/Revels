@@ -3,7 +3,7 @@ package chipset.revels.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.Gravity;
 import android.view.View;
@@ -13,7 +13,7 @@ import android.widget.Toast;
 import chipset.potato.Potato;
 import chipset.revels.R;
 
-public class ContactActivity extends ActionBarActivity {
+public class ContactActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class ContactActivity extends ActionBarActivity {
         setContentView(R.layout.activity_contact);
         getSupportActionBar().setElevation(0f);
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Tap to call", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(),"Tap to call", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0);
         toast.show();
 
@@ -46,7 +46,7 @@ public class ContactActivity extends ActionBarActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Potato.potate().getIntents().callIntent(getApplicationContext(), "+918867666977");
+                        Potato.potate(getApplicationContext()).Intents().callIntent("+918867666977");
                     }
                 });
                 builder.create();
@@ -63,7 +63,7 @@ public class ContactActivity extends ActionBarActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Potato.potate().getIntents().callIntent(getApplicationContext(), "+919869572246");
+                        Potato.potate(getApplicationContext()).Intents().callIntent("+919869572246");
                     }
                 });
                 builder.create();
@@ -80,7 +80,7 @@ public class ContactActivity extends ActionBarActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Potato.potate().getIntents().callIntent(getApplicationContext(), "+919740562736");
+                        Potato.potate(getApplicationContext()).Intents().callIntent("+919740562736");
                     }
                 });
                 builder.create();
@@ -97,7 +97,7 @@ public class ContactActivity extends ActionBarActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Potato.potate().getIntents().callIntent(getApplicationContext(), "+919448954991");
+                        Potato.potate(getApplicationContext()).Intents().callIntent("+919448954991");
                     }
                 });
                 builder.create();
@@ -108,42 +108,42 @@ public class ContactActivity extends ActionBarActivity {
         fbImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), "https://www.facebook.com/mitrevels");
+                Potato.potate(getApplicationContext()).Intents().browserIntent("https://www.facebook.com/mitrevels");
             }
         });
 
         twImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), "https://twitter.com/RevelsMIT");
+                Potato.potate(getApplicationContext()).Intents().browserIntent("https://twitter.com/RevelsMIT");
             }
         });
 
         ytImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), "https://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw");
+                Potato.potate(getApplicationContext()).Intents().browserIntent("https://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw");
             }
         });
 
        instaImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), "http://instagram.com/revelsmit/");
+                Potato.potate(getApplicationContext()).Intents().browserIntent("http://instagram.com/revelsmit/");
             }
         });
 
         gplusImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), "https://plus.google.com/107584695406538298114/");
+                Potato.potate(getApplicationContext()).Intents().browserIntent("https://plus.google.com/107584695406538298114/");
             }
         });
 
         webImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), "http://mitrevels.in/");
+                Potato.potate(getApplicationContext()).Intents().browserIntent("http://mitrevels.in/");
             }
         });
     }

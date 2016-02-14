@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.Gravity;
@@ -42,7 +43,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * Project : Revels
  * Date : 19/1/15
  */
-public class ImageActivity extends ActionBarActivity {
+public class ImageActivity extends AppCompatActivity {
     boolean isVisible = true;
     ImageView mImageView;
     static int count = 1;
@@ -128,7 +129,7 @@ public class ImageActivity extends ActionBarActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "Image Saved", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), "COUNT", ++count);
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference("COUNT", ++count);
             } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Couldn\'t Save Image ", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
@@ -154,7 +155,7 @@ public class ImageActivity extends ActionBarActivity {
         File dir = new File(filepath.getAbsolutePath()
                 + "/Pictures/Revels15/");
         dir.mkdirs();
-        count = Potato.potate().getPreferences().getSharedPreferenceInteger(getApplicationContext(), "COUNT");
+        count = Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceInteger("COUNT");
         File file = new File(dir, "IMG_INSTA_" + String.valueOf(count) + ".png");
         OutputStream output;
         try {

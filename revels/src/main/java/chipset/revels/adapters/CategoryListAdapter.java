@@ -91,7 +91,7 @@ public class CategoryListAdapter extends BaseAdapter {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Potato.potate().getIntents().callIntent(context, finalContact);
+                        Potato.potate(context).Intents().callIntent(finalContact);
                     }
                 });
                 builder.setNegativeButton("NO", null);

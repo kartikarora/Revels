@@ -12,7 +12,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -21,7 +22,7 @@ import android.widget.Button;
 
 import chipset.revels.R;
 
-public class WebViewActivity extends ActionBarActivity {
+public class WebViewActivity extends AppCompatActivity {
     WebView registerView;
     ProgressDialog pDialog;
     String mURL;
@@ -29,6 +30,9 @@ public class WebViewActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_web_view);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0f);
         mURL = getIntent().getStringExtra("URL");
         loadWebView();
@@ -81,8 +85,6 @@ public class WebViewActivity extends ActionBarActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     public void loadWebView() {
-        setContentView(R.layout.activity_web_view);
-
         pDialog = new ProgressDialog(WebViewActivity.this);
         pDialog.setCancelable(true);
         pDialog.setMessage("Loading...");

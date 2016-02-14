@@ -5,6 +5,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,7 +15,7 @@ import chipset.potato.Potato;
 import chipset.revels.R;
 import chipset.revels.resources.Constants;
 
-public class LUGActivity extends ActionBarActivity {
+public class LUGActivity extends AppCompatActivity {
     Vibrator vibrator;
     ShakeDetector shakeDetector;
     SensorManager sensorManager;
@@ -33,14 +34,14 @@ public class LUGActivity extends ActionBarActivity {
         lugFbImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), Constants.URL_LUG_FB);
+                Potato.potate(getApplicationContext()).Intents().browserIntent(Constants.URL_LUG_FB);
             }
         });
 
         lugGitHubImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getIntents().browserIntent(getApplicationContext(), Constants.URL_LUG_GITHUB);
+                Potato.potate(getApplicationContext()).Intents().browserIntent(Constants.URL_LUG_GITHUB);
             }
         });
     }

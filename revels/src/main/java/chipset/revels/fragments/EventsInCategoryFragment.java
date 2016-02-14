@@ -3,9 +3,11 @@ package chipset.revels.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,7 +24,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.nirhart.parallaxscroll.views.ParallaxListView;
-import com.nispok.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class EventsInCategoryFragment extends Fragment {
     private ParallaxListView eventListView;
     private ProgressBar eventProgressBar;
     private int position;
+    private CoordinatorLayout coordinatorLayout;
     LinearLayout mButtonLinearLayout;
     private Animation animUp;
     private Animation animDown;
@@ -84,6 +86,7 @@ public class EventsInCategoryFragment extends Fragment {
         this.container = container;
         View view = inflater.inflate(R.layout.fragment_events_in_category, container,
                 false);
+        coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.events_in_category_coordinator_layout);
         eventListView = (ParallaxListView) view.findViewById(R.id.event_list_view);
         eventProgressBar = (ProgressBar) view.findViewById(R.id.event_progress_bar);
         mButtonLinearLayout = (LinearLayout) view.findViewById(R.id.button_linear_layout);
@@ -97,7 +100,7 @@ public class EventsInCategoryFragment extends Fragment {
         animUp = AnimationUtils.loadAnimation(view.getContext(), R.anim.animation_up);
         animDown = AnimationUtils.loadAnimation(view.getContext(), R.anim.animation_down);
 
-        Image image = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.IMAGE), Image.class);
+        Image image = new Gson().fromJson(Potato.potate(getActivity()).Preferences().getSharedPreferenceString(Constants.IMAGE), Image.class);
         Picasso.with(view.getContext()).load(image.getImage(position)).into(imageView);
         AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250);
         imageView.setBackgroundColor(getResources().getColor(R.color.teal_primary));
@@ -109,7 +112,7 @@ public class EventsInCategoryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mActionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
+        mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
     @Override
@@ -160,14 +163,14 @@ public class EventsInCategoryFragment extends Fragment {
                     } else {
                         segregateEvents(event);
                         updateList(view, event);
-                        Potato.potate().getPreferences().putSharedPreference(view.getContext(), Constants.EVENT, new Gson().toJson(event));
+                        Potato.potate(getActivity()).Preferences().putSharedPreference(Constants.EVENT, new Gson().toJson(event));
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
-                    if (!Potato.potate().getPreferences().getSharedPreferenceBoolean(view.getContext(), Constants.FIRST_RUN)) {
-                        Event event = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.EVENT), Event.class);
+                    if (!Potato.potate(getActivity()).Preferences().getSharedPreferenceBoolean(Constants.FIRST_RUN)) {
+                        Event event = new Gson().fromJson(Potato.potate(getActivity()).Preferences().getSharedPreferenceString(Constants.EVENT), Event.class);
                         try {
                             segregateAndUpdate(view, event);
                         } catch (Exception e) {
@@ -175,7 +178,8 @@ public class EventsInCategoryFragment extends Fragment {
                         }
                     } else {
                         error.printStackTrace();
-                        Snackbar.with(view.getContext()).text("Oops! Something went wrong!").show(getActivity());
+                        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Oops! Something went wrong!", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
                     }
                 }
             });
@@ -194,14 +198,14 @@ public class EventsInCategoryFragment extends Fragment {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        Potato.potate().getPreferences().putSharedPreference(view.getContext(), Constants.EVENT + category.getData().get(position - 1).getCategoryCode(), new Gson().toJson(event));
+                        Potato.potate(getActivity()).Preferences().putSharedPreference(Constants.EVENT + category.getData().get(position - 1).getCategoryCode(), new Gson().toJson(event));
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
-                    if (!Potato.potate().getPreferences().getSharedPreferenceBoolean(view.getContext(), Constants.FIRST_RUN)) {
-                        Event event = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.EVENT + category.getData().get(position - 1).getCategoryCode()), Event.class);
+                    if (!Potato.potate(getActivity()).Preferences().getSharedPreferenceBoolean(Constants.FIRST_RUN)) {
+                        Event event = new Gson().fromJson(Potato.potate(getActivity()).Preferences().getSharedPreferenceString(Constants.EVENT + category.getData().get(position - 1).getCategoryCode()), Event.class);
                         try {
                             segregateAndUpdate(view, event);
                         } catch (Exception e) {
@@ -209,7 +213,7 @@ public class EventsInCategoryFragment extends Fragment {
                         }
                     } else {
                         error.printStackTrace();
-                        Snackbar.with(view.getContext()).text("Oops! Something went wrong!").show(getActivity());
+                        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Oops! Something went wrong!", Snackbar.LENGTH_SHORT);
                     }
                 }
             });

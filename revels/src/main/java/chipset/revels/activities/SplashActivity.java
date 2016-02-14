@@ -3,7 +3,7 @@ package chipset.revels.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,7 +32,7 @@ import retrofit.client.Response;
  * Date : 7/1/15
  */
 
-public class SplashActivity extends ActionBarActivity {
+public class SplashActivity extends AppCompatActivity {
 
     ImageView das2, das3, das4, das5, das6, das1, revels, volatus;
 
@@ -205,7 +205,7 @@ public class SplashActivity extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)) {
+                        if (Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceBoolean(Constants.FIRST_RUN)) {
                             startLoad();
                         } else {
                             startActivity(new Intent(SplashActivity.this, MainActivity.class));
@@ -234,9 +234,9 @@ public class SplashActivity extends ActionBarActivity {
             @Override
             public void success(Category category, Response response) {
                 Image image = new Image().setData(category.getCount());
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.CATEG, new Gson().toJson(category));
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.IMAGE, new Gson().toJson(image));
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.FOLLOWING, new Gson().toJson(new Event()));
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.CATEG, new Gson().toJson(category));
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.IMAGE, new Gson().toJson(image));
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.FOLLOWING, new Gson().toJson(new Event()));
                 storeEndPoints(category);
             }
 
@@ -254,7 +254,7 @@ public class SplashActivity extends ActionBarActivity {
             APIClient.getRevels().getEventFromEndPoint(category.getData().get(i).getCategoryCode(), new Callback<Event>() {
                 @Override
                 public void success(Event event, Response response) {
-                    Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.CATEG + category.getData().get(finalI).getCategoryCode(), new Gson().toJson(event));
+                    Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.CATEG + category.getData().get(finalI).getCategoryCode(), new Gson().toJson(event));
                 }
 
                 @Override
@@ -271,7 +271,7 @@ public class SplashActivity extends ActionBarActivity {
         APIClient.getRevels().getAllEvents(new Callback<Event>() {
             @Override
             public void success(Event event, Response response) {
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.EVENT, new Gson().toJson(event));
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.EVENT, new Gson().toJson(event));
                 onSuccess();
             }
 
@@ -307,7 +307,7 @@ public class SplashActivity extends ActionBarActivity {
         gettingReadyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.FIRST_RUN, false);
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.FIRST_RUN, false);
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish();
             }
