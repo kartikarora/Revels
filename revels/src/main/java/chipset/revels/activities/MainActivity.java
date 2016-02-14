@@ -8,10 +8,9 @@ package chipset.revels.activities;
  */
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +27,6 @@ import com.google.gson.Gson;
 import chipset.potato.Potato;
 import chipset.revels.R;
 import chipset.revels.adapters.CategoryTabsAdapter;
-import chipset.revels.layouts.SlidingTabLayout;
 import chipset.revels.model.revels.Category;
 import chipset.revels.network.APIClient;
 import chipset.revels.resources.Constants;
@@ -39,7 +37,7 @@ import retrofit.client.Response;
 public class MainActivity extends AppCompatActivity {
 
     ViewPager mViewPager;
-    SlidingTabLayout mSlidingTabLayout;
+    TabLayout mTabLayout;
     PagerAdapter mTabsAdapter;
     ProgressBar progressBar;
     boolean doubleBackToExitPressedOnce = false;
@@ -58,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadMain() {
         setContentView(R.layout.activity_main);
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP)
-            mSlidingTabLayout.setElevation(10f);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         progressBar = (ProgressBar) findViewById(R.id.main_progress_bar);
 
         APIClient.getRevels().getCategory(new Callback<Category>() {
@@ -113,17 +109,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setCategory(Category category) {
-        mSlidingTabLayout.setVisibility(View.VISIBLE);
+        mTabLayout.setVisibility(View.VISIBLE);
         mTabsAdapter = new CategoryTabsAdapter(getSupportFragmentManager(), getApplicationContext(), category);
         mViewPager.setAdapter(mTabsAdapter);
-        mSlidingTabLayout.setViewPager(mViewPager);
-        mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return Color.WHITE;
-
-            }
-        });
+        mTabLayout.setupWithViewPager(mViewPager);
         progressBar.setVisibility(View.GONE);
     }
 
