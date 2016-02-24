@@ -1,6 +1,7 @@
 package chipset.revels.model.revels;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,27 +15,27 @@ import java.util.List;
 
 public class Category {
 
+    @SerializedName("data")
     @Expose
-    private List<CategoryDatum> data = new ArrayList<>();
-    @Expose
+    private List<CategoryDatum> data = new ArrayList<CategoryDatum>();
     private int count;
-    @Expose
-    private int version;
-
     /**
-     * @return The data
+     *
+     * @return
+     * The data
      */
     public List<CategoryDatum> getData() {
         return data;
     }
 
     /**
-     * @param data The data
+     *
+     * @param data
+     * The data
      */
     public void setData(List<CategoryDatum> data) {
         this.data = data;
     }
-
     /**
      * @return The count
      */
@@ -48,19 +49,4 @@ public class Category {
     public void setCount(int count) {
         this.count = count;
     }
-
-    /**
-     * @return The version
-     */
-    public int getVersion() {
-        return version;
-    }
-
-    /**
-     * @param version The version
-     */
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
 }

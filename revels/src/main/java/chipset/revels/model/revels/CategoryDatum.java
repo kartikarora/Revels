@@ -5,85 +5,67 @@ import com.google.gson.annotations.SerializedName;
 
 public class CategoryDatum {
 
+    @SerializedName("cid")
     @Expose
-    private String category;
+    private String cid;
+    @SerializedName("cname")
     @Expose
-    private String description;
-    @SerializedName("category_code")
+    private String cname;
+    @SerializedName("cdesc")
     @Expose
-    private String categoryCode;
-    @Expose
-    private String version;
+    private String cdesc;
+
     /**
-     * 
+     *
      * @return
-     *     The category
+     * The cid
      */
-    public String getCategory() {
-        return category;
+    public String getCid() {
+        return cid;
     }
 
     /**
-     * 
-     * @param category
-     *     The category
+     *
+     * @param cid
+     * The cid
      */
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
     /**
-     * 
+     *
      * @return
-     *     The description
+     * The cname
      */
-    public String getDescription() {
-        return description;
+    public String getCname() {
+        return cname;
     }
 
     /**
-     * 
-     * @param description
-     *     The description
+     *
+     * @param cname
+     * The cname
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     /**
-     * 
+     *
      * @return
-     *     The categoryCode
+     * The cdesc
      */
-    public String getCategoryCode() {
-        return categoryCode;
+    public String getCdesc() {
+        return cdesc;
     }
 
     /**
-     * 
-     * @param categoryCode
-     *     The category_code
+     *
+     * @param cdesc
+     * The cdesc
      */
-    public void setCategoryCode(String categoryCode) {
-        this.categoryCode = categoryCode;
+    public void setCdesc(String cdesc) {
+        this.cdesc = cdesc;
     }
-
-    /**
-     * 
-     * @return
-     *     The version
-     */
-    public String getVersion() {
-        return version;
-    }
-
-    /**
-     * 
-     * @param version
-     *     The version
-     */
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
 }

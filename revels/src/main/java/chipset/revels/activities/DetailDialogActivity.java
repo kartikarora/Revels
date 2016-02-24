@@ -2,11 +2,8 @@ package chipset.revels.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -36,17 +33,17 @@ public class DetailDialogActivity extends ActionBarActivity {
         final Event followingEvent = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getApplicationContext(), Constants.FOLLOWING), Event.class);
         final EventDatum eventDatum = new Gson().fromJson(getIntent().getStringExtra(Constants.EVENT_DATA), EventDatum.class);
 
-        eventDetailDialogTextView.setText(eventDatum.getDescription());
-        eventNameDialogTextView.setText(eventDatum.getEvent());
+        eventDetailDialogTextView.setText(eventDatum.getEdesc());
+        eventNameDialogTextView.setText(eventDatum.getEname());
 
         for (int i = 0; i < followingEvent.getData().size(); i++) {
-            if (followingEvent.getData().get(i).getEvent().equals(eventDatum.getEvent())) {
+            if (followingEvent.getData().get(i).getEname().equals(eventDatum.getEname())) {
                 eventFollowCheckBox.setChecked(true);
                 break;
             } else eventFollowCheckBox.setChecked(false);
         }
 
-        eventFollowCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*eventFollowCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -70,6 +67,6 @@ public class DetailDialogActivity extends ActionBarActivity {
                     t.show();
                 }
             }
-        });
+        });*/
     }
 }

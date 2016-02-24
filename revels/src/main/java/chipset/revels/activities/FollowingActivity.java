@@ -38,7 +38,7 @@ public class FollowingActivity extends ActionBarActivity {
         super.onResume();
         ListView followingListView = (ListView) findViewById(R.id.following_list_view);
         final Event event = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getApplicationContext(), Constants.FOLLOWING), Event.class);
-        if (event.getCount() == 0) {
+        if (event.getData().size() == 0) {
             setContentView(R.layout.no_followed_events);
         } else {
             adapter = new CategoryListAdapter(FollowingActivity.this, event, 0);

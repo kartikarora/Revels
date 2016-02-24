@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,7 +24,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.nirhart.parallaxscroll.views.ParallaxListView;
 import com.nispok.snackbar.Snackbar;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,8 @@ import chipset.revels.adapters.CategoryListAdapter;
 import chipset.revels.model.revels.Category;
 import chipset.revels.model.revels.Event;
 import chipset.revels.model.revels.EventDatum;
-import chipset.revels.model.revels.Image;
+import chipset.revels.model.revels.Schedule;
+import chipset.revels.model.revels.ScheduleDatum;
 import chipset.revels.network.APIClient;
 import chipset.revels.resources.Constants;
 import retrofit.Callback;
@@ -97,8 +98,8 @@ public class EventsInCategoryFragment extends Fragment {
         animUp = AnimationUtils.loadAnimation(view.getContext(), R.anim.animation_up);
         animDown = AnimationUtils.loadAnimation(view.getContext(), R.anim.animation_down);
 
-        Image image = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.IMAGE), Image.class);
-        Picasso.with(view.getContext()).load(image.getImage(position)).into(imageView);
+        /*Image image = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.IMAGE), Image.class);
+        Picasso.with(view.getContext()).load(image.getImage(position)).into(imageView);*/
         AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250);
         imageView.setBackgroundColor(getResources().getColor(R.color.teal_primary));
         imageView.setLayoutParams(params);
@@ -152,7 +153,7 @@ public class EventsInCategoryFragment extends Fragment {
             APIClient.getRevels().getAllEvents(new Callback<Event>() {
                 @Override
                 public void success(Event event, Response response) {
-                    if (event.getCount() == 0) {
+                    if (event.getData().size() == 0) {
                         textView.setVisibility(View.VISIBLE);
                         eventProgressBar.setVisibility(View.GONE);
                         mButtonLinearLayout.setVisibility(View.VISIBLE);
@@ -179,8 +180,8 @@ public class EventsInCategoryFragment extends Fragment {
                     }
                 }
             });
-        } else {
-            APIClient.getRevels().getEventFromEndPoint(category.getData().get(position - 1).getCategoryCode(), new Callback<Event>() {
+        } else {/*
+            APIClient.getRevels().getEventFromEndPoint(category.getData().get(position - 1).getCid(), new Callback<Event>() {
                 @Override
                 public void success(Event event, Response response) {
                     if (event.getCount() == 0) {
@@ -212,7 +213,7 @@ public class EventsInCategoryFragment extends Fragment {
                         Snackbar.with(view.getContext()).text("Oops! Something went wrong!").show(getActivity());
                     }
                 }
-            });
+            });*/
         }
 
         dayOneButton.setOnClickListener(new View.OnClickListener() {
@@ -265,8 +266,35 @@ public class EventsInCategoryFragment extends Fragment {
 
     private void segregateEvents(Event event) {
         List<EventDatum> eventDatumList = event.getData();
+        Schedule schedule = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getActivity(), Constants.SCHEDULE), Schedule.class);
+        Log.d("schedule",schedule.toString());
+        for (ScheduleDatum scheduleDatum : schedule.getData()) {
+            for (int i = 0; i < eventDatumList.size(); i++) {
+                EventDatum eventDatum = eventDatumList.get(i);
+                if (eventDatum.getEid().equals(scheduleDatum.getEid())) {
+                    eventDatum.setDay(scheduleDatum.getDay());
+                    eventDatum.setStrttime(scheduleDatum.getStrttime());
+                    eventDatum.setEvenue(scheduleDatum.getEvenue());
+                    eventDatum.setEndtime(scheduleDatum.getEndtime());
+                    eventDatum.setRoundno(scheduleDatum.getRoundno());
+                    eventDatumList.remove(eventDatum);
+                    eventDatumList.add(i,eventDatum);
+                }else {
+                    eventDatum.setDay("1");
+                    eventDatum.setStrttime("NA");
+                    eventDatum.setEvenue("NA");
+                    eventDatum.setEndtime("NA");
+                    eventDatum.setRoundno("NA");
+                    eventDatumList.remove(eventDatum);
+                    eventDatumList.add(i,eventDatum);
+                }
+            }
+        }
+        for(EventDatum eventDatum: eventDatumList){
+            Log.d("event",eventDatum.getDay());
+        }
         for (int i = 0; i < eventDatumList.size(); i++) {
-            int day = eventDatumList.get(i).getDay();
+            int day = Integer.parseInt(eventDatumList.get(i).getDay());
             switch (day) {
                 case 1: {
                     eventOneList.add(eventDatumList.get(i));

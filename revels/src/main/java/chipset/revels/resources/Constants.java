@@ -11,7 +11,7 @@ public class Constants {
     public static String CATEG = "category";
     public static String EVENT = "event";
     public static String IMAGE = "image";
-
+    public static String SCHEDULE = "schedule";
     public static String FOLLOWING = "following";
 
     public static String EVENT_DATA = "event_data";
@@ -30,4 +30,7 @@ public class Constants {
     public static String URL_REG_CUL = "http://mitrevels.in/register/cultural/index.php";
     public static String URL_LUG_FB = "https://www.facebook.com/LUGManipal";
     public static String URL_LUG_GITHUB = "https://github.com/LUGM/";
+    public static final String INSTA_API_ENDPOINT="";
+    public static final String API_SECRET = "LUGbatchof2017";
+    public static final String API_PARAMS = "nid";
 }
