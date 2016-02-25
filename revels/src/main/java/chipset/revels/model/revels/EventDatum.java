@@ -5,182 +5,225 @@ import com.google.gson.annotations.SerializedName;
 
 public class EventDatum {
 
+    @SerializedName("ename")
     @Expose
-    private String event;
+    private String ename;
+    @SerializedName("eid")
     @Expose
-    private String category;
+    private String eid;
+    @SerializedName("edesc")
     @Expose
-    private String description;
+    private String edesc;
+    @SerializedName("emaxteamsize")
     @Expose
-    private String location;
+    private String emaxteamsize;
+    @SerializedName("cname")
     @Expose
-    private String start;
+    private String cname;
+    @SerializedName("cid")
     @Expose
-    private String stop;
+    private String cid;
+    @SerializedName("cntctname")
     @Expose
+    private String cntctname;
+    @SerializedName("cntctno")
+    @Expose
+    private String cntctno;
+    private String roundno;
+    private String evenue;
+    private String  strttime;
+    private String endtime;
+    private String day;
     private String date;
-    @Expose
-    private String contact;
-    @SerializedName("event_code")
-    @Expose
-    private String eventCode;
-    @SerializedName("last_updated")
-    @Expose
-    private String lastUpdated;
-    @Expose
-    private int day;
-
     /**
-     * @return The event
+     *
+     * @return
+     * The ename
      */
-    public String getEvent() {
-        return event;
+    public String getEname() {
+        return ename;
     }
 
     /**
-     * @param event The event
+     *
+     * @param ename
+     * The ename
      */
-    public void setEvent(String event) {
-        this.event = event;
+    public void setEname(String ename) {
+        this.ename = ename;
     }
 
     /**
-     * @return The category
+     *
+     * @return
+     * The eid
      */
-    public String getCategory() {
-        return category;
+    public String getEid() {
+        return eid;
     }
 
     /**
-     * @param category The category
+     *
+     * @param eid
+     * The eid
      */
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    /**
-     * @return The description
-     */
-    public String getDescription() {
-        return description;
+    public void setEid(String eid) {
+        this.eid = eid;
     }
 
     /**
-     * @param description The description
+     *
+     * @return
+     * The edesc
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public String getEdesc() {
+        return edesc;
     }
 
     /**
-     * @return The location
+     *
+     * @param edesc
+     * The edesc
      */
-    public String getLocation() {
-        return location;
+    public void setEdesc(String edesc) {
+        this.edesc = edesc;
     }
 
     /**
-     * @param location The location
+     *
+     * @return
+     * The emaxteamsize
      */
-    public void setLocation(String location) {
-        this.location = location;
+    public String getEmaxteamsize() {
+        return emaxteamsize;
     }
 
     /**
-     * @return The start
+     *
+     * @param emaxteamsize
+     * The emaxteamsize
      */
-    public String getStart() {
-        return start;
+    public void setEmaxteamsize(String emaxteamsize) {
+        this.emaxteamsize = emaxteamsize;
     }
 
     /**
-     * @param start The start
+     *
+     * @return
+     * The cname
      */
-    public void setStart(String start) {
-        this.start = start;
+    public String getCname() {
+        return cname;
     }
 
     /**
-     * @return The stop
+     *
+     * @param cname
+     * The cname
      */
-    public String getStop() {
-        return stop;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     /**
-     * @param stop The stop
+     *
+     * @return
+     * The cid
      */
-    public void setStop(String stop) {
-        this.stop = stop;
+    public String getCid() {
+        return cid;
     }
 
     /**
-     * @return The date
+     *
+     * @param cid
+     * The cid
      */
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
+    /**
+     *
+     * @return
+     * The cntctname
+     */
+    public String getCntctname() {
+        return cntctname;
+    }
+
+    /**
+     *
+     * @param cntctname
+     * The cntctname
+     */
+    public void setCntctname(String cntctname) {
+        this.cntctname = cntctname;
+    }
+
+    /**
+     *
+     * @return
+     * The cntctno
+     */
+    public String getCntctno() {
+        return cntctno;
+    }
+
+    /**
+     *
+     * @param cntctno
+     * The cntctno
+     */
+    public void setCntctno(String cntctno) {
+        this.cntctno = cntctno;
+    }
+
     public String getDate() {
         return date;
     }
 
-    /**
-     * @param date The date
-     */
     public void setDate(String date) {
         this.date = date;
     }
 
-    /**
-     * @return The contact
-     */
-    public String getContact() {
-        return contact;
+    public String getRoundno() {
+        return roundno;
     }
 
-    /**
-     * @param contact The contact
-     */
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setRoundno(String roundno) {
+        this.roundno = roundno;
     }
 
-    /**
-     * @return The eventCode
-     */
-    public String getEventCode() {
-        return eventCode;
+    public String getEvenue() {
+        return evenue;
     }
 
-    /**
-     * @param eventCode The event_code
-     */
-    public void setEventCode(String eventCode) {
-        this.eventCode = eventCode;
+    public void setEvenue(String evenue) {
+        this.evenue = evenue;
     }
 
-    /**
-     * @return The lastUpdated
-     */
-    public String getLastUpdated() {
-        return lastUpdated;
+    public String getStrttime() {
+        return strttime;
     }
 
-    /**
-     * @param lastUpdated The last_updated
-     */
-    public void setLastUpdated(String lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setStrttime(String strttime) {
+        this.strttime = strttime;
     }
 
-    /**
-     * @return The day
-     */
-    public int getDay() {
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
+
+    public String getDay() {
         return day;
     }
 
-    /**
-     * @param day The day
-     */
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
-
 }

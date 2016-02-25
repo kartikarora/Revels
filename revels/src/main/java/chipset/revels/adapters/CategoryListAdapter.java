@@ -1,18 +1,12 @@
 package chipset.revels.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import chipset.potato.Potato;
 import chipset.revels.R;
 import chipset.revels.model.revels.Event;
 import chipset.revels.model.revels.EventDatum;
@@ -39,7 +33,7 @@ public class CategoryListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return event.getCount();
+        return event.getData().size();
     }
 
     @Override
@@ -67,17 +61,17 @@ public class CategoryListAdapter extends BaseAdapter {
         ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 
         final EventDatum eventDatum = getItem(position);
-        viewHolder.eventNameTextView.setText(eventDatum.getEvent());
-        viewHolder.eventStartTextView.setText("Starts at: " + eventDatum.getStart());
-        viewHolder.eventEndTextView.setText("Ends at: " + eventDatum.getStop());
+        viewHolder.eventNameTextView.setText(eventDatum.getEname());
+        viewHolder.eventStartTextView.setText("Starts at: " + eventDatum.getStrttime());
+        viewHolder.eventEndTextView.setText("Ends at: " + eventDatum.getEndtime());
         viewHolder.eventDateTextView.setText("On " + eventDatum.getDate());
-        viewHolder.eventLocationTextView.setText("At/In: " + eventDatum.getLocation());
-        viewHolder.eventContactTextView.setText(eventDatum.getContact());
-        viewHolder.eventCategoryTextView.setText(eventDatum.getCategory());
+        viewHolder.eventLocationTextView.setText("At/In: " + eventDatum.getEvenue());
+    /*    viewHolder.eventContactTextView.setText(eventDatum.getContact());
+        viewHolder.eventCategoryTextView.setText(eventDatum.getCategory());*/
 
         if (categoryPosition != 0) viewHolder.eventCategoryTextView.setVisibility(View.GONE);
 
-        viewHolder.eventContactTextView.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.eventContactTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String contact = "+91";
@@ -99,7 +93,7 @@ public class CategoryListAdapter extends BaseAdapter {
                 builder.create();
                 builder.show();
             }
-        });
+        });*/
 
         return convertView;
     }

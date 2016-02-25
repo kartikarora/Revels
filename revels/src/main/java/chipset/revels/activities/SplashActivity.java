@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -18,7 +19,7 @@ import chipset.potato.Potato;
 import chipset.revels.R;
 import chipset.revels.model.revels.Category;
 import chipset.revels.model.revels.Event;
-import chipset.revels.model.revels.Image;
+import chipset.revels.model.revels.Schedule;
 import chipset.revels.network.APIClient;
 import chipset.revels.resources.Constants;
 import retrofit.Callback;
@@ -229,8 +230,20 @@ public class SplashActivity extends AppCompatActivity {
         gettingReadyButton = (Button) findViewById(R.id.getting_ready_button);
         gettingReadyImageView = (ImageView) findViewById(R.id.getting_ready_image_view);
         continueTextView = (TextView) findViewById(R.id.continue_text_view);
+        Log.d("category", "getting ready");
+        APIClient.getRevels().getCategories(new Callback<Category>() {
+            @Override
+            public void success(Category category, Response response) {
+                storeEndPoints(category);
+            }
 
-        APIClient.getRevels().getCategory(new Callback<Category>() {
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("category", "error");
+                error.printStackTrace();
+            }
+        });
+       /* APIClient.getRevels().getCategory(new Callback<Category>() {
             @Override
             public void success(Category category, Response response) {
                 Image image = new Image().setData(category.getCount());
@@ -245,33 +258,55 @@ public class SplashActivity extends AppCompatActivity {
                 error.printStackTrace();
                 onFail();
             }
-        });
+        });*/
     }
 
     public void storeEndPoints(final Category category) {
-        for (int i = 0; i < category.getCount(); i++) {
-            final int finalI = i;
-            APIClient.getRevels().getEventFromEndPoint(category.getData().get(i).getCategoryCode(), new Callback<Event>() {
-                @Override
-                public void success(Event event, Response response) {
-                    Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.CATEG + category.getData().get(finalI).getCategoryCode(), new Gson().toJson(event));
+        /*APIClient.getRevels().getEvents(new Callback<Event>() {
+            @Override
+            public void success(Event event, Response response) {
+                for (int i = 0; i < category.getData().size(); i++) {
+                    final int finalI = i;
+                    Log.d("category name", category.getData().get(i).getCname());
+
+                    Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.CATEG + category.getData().get(finalI).getCid(), new Gson().toJson(event.getData().get()));
                 }
 
-                @Override
-                public void failure(RetrofitError error) {
-                    error.printStackTrace();
-                    onFail();
-                }
-            });
-        }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+                onFail();
+            }
+        });*/
+        /*Image image = new Image().setData(category.getData().size());*/
+        Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.CATEG, new Gson().toJson(category));
+        /*Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.IMAGE, new Gson().toJson(image));*/
         startEvents();
     }
 
     public void startEvents() {
-        APIClient.getRevels().getAllEvents(new Callback<Event>() {
+        APIClient.getRevels().getEvents(new Callback<Event>() {
             @Override
             public void success(Event event, Response response) {
                 Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.EVENT, new Gson().toJson(event));
+                getSchedule();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+                onFail();
+            }
+        });
+    }
+
+    public void getSchedule() {
+        APIClient.getRevels().getSchedule(new Callback<Schedule>() {
+            @Override
+            public void success(Schedule schedule, Response response) {
+                Potato.potate(getApplicationContext()).Preferences().putSharedPreference(Constants.SCHEDULE, new Gson().toJson(schedule));
                 onSuccess();
             }
 

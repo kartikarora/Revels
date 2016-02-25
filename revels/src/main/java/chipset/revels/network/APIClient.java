@@ -4,6 +4,8 @@ import chipset.revels.model.instagram.InstaFeed;
 import chipset.revels.model.revels.Category;
 import chipset.revels.model.revels.Event;
 import chipset.revels.model.revels.Result;
+import chipset.revels.model.revels.Schedule;
+import chipset.revels.resources.Constants;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
@@ -22,7 +24,7 @@ public class APIClient {
 
     public static DataInterface getRevels() {
         if (dataInterface == null) {
-            String URL_API = "URL_API";
+            String URL_API = "http://mitrevels.in/apidata";
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint(URL_API)
                     .build();
@@ -56,10 +58,19 @@ public class APIClient {
 
         @GET("/results/")
         void getResults(Callback<Result> resultCallback);
+
+        @GET("/events.php")
+        void getEvents(Callback<Event> eventCallback);
+
+        @GET("/categories.php")
+        void getCategories(Callback<Category> categoryCallback);
+
+        @GET("/schedule.php")
+        void getSchedule(Callback<Schedule> scheduleCallback);
     }
 
     public interface InstaFeedInterface {
-        @GET("/v1/tags/techtatva15/media/recent?client_id=fd6b3100174e42d7aa7d546574e01c76")
+        @GET(Constants.INSTA_API_ENDPOINT)
         void getFeed(Callback<InstaFeed> instaFeedCallback);
     }
 }

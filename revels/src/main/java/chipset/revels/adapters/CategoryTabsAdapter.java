@@ -26,10 +26,10 @@ public class CategoryTabsAdapter extends FragmentPagerAdapter {
         super(fm);
         this.context = context;
         this.category = category;
-        this.categories = new String[category.getCount() + 1];
+        this.categories = new String[category.getData().size() + 1];
         this.categories[0] = "All Events";
         for (int i = 1; i < this.categories.length; i++) {
-            this.categories[i] = category.getData().get(i-1).getCategory();
+            this.categories[i] = category.getData().get(i-1).getCname();
         }
     }
 

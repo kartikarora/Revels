@@ -42,7 +42,6 @@ public class FollowingActivity extends AppCompatActivity {
         ListView followingListView = (ListView) findViewById(R.id.following_list_view);
         final Event event = new Gson().fromJson(Potato.potate(getApplicationContext()).Preferences().getSharedPreferenceString(Constants.FOLLOWING), Event.class);
         if (event.getCount() == 0) {
-            setContentView(R.layout.no_followed_events);
         } else {
             adapter = new CategoryListAdapter(FollowingActivity.this, event, 0);
             adapter.notifyDataSetChanged();
