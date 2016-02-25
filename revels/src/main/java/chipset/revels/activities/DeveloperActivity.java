@@ -26,7 +26,7 @@ public class DeveloperActivity extends ActionBarActivity {
     ShakeDetector shakeDetector;
     SensorManager sensorManager;
     ShakeDetector.Listener listener;
-    ImageView tanayImageView, manishImageView, sakshamImageView, kartikImageView, shubhamImageView, samarthImageView;
+    ImageView kartikImageView, anuraagImageView, sakethImageView, yashImageView, avikantImageView, sorteImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,52 +34,52 @@ public class DeveloperActivity extends ActionBarActivity {
         setContentView(R.layout.activity_developer);
         getSupportActionBar().setElevation(0f);
 
-        tanayImageView = (ImageView) findViewById(R.id.tan_image);
-        manishImageView = (ImageView) findViewById(R.id.man_image);
-        kartikImageView = (ImageView) findViewById(R.id.kar_image);
-        shubhamImageView = (ImageView) findViewById(R.id.shub_image);
-        sakshamImageView = (ImageView) findViewById(R.id.sak_image);
-        samarthImageView = (ImageView) findViewById(R.id.sam_image);
-
-        tanayImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.team_lead)).putExtra(Constants.SUBTITLE, getString(R.string.tanay)).putExtra(Constants.IMG, R.drawable.tanay));
-            }
-        });
-
-        sakshamImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.winphone)).putExtra(Constants.SUBTITLE, getString(R.string.saksham)).putExtra(Constants.IMG, R.drawable.saksham));
-            }
-        });
+        kartikImageView = (ImageView) findViewById(R.id.kartik_image);
+        anuraagImageView = (ImageView) findViewById(R.id.anuraag_image);
+        yashImageView = (ImageView) findViewById(R.id.yash_image);
+        avikantImageView = (ImageView) findViewById(R.id.avikant_image);
+        sakethImageView = (ImageView) findViewById(R.id.saketh_image);
+        sorteImageView = (ImageView) findViewById(R.id.shubham_image);
 
         kartikImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.android)).putExtra(Constants.SUBTITLE, getString(R.string.kartik)).putExtra(Constants.IMG, R.drawable.kartik));
+                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.team_lead)).putExtra(Constants.SUBTITLE, getString(R.string.kartik)).putExtra(Constants.IMG, R.drawable.kartik));
             }
         });
 
-        shubhamImageView.setOnClickListener(new View.OnClickListener() {
+        sakethImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.iOS)).putExtra(Constants.SUBTITLE, getString(R.string.shubham)).putExtra(Constants.IMG, R.drawable.shubham));
+                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.android)).putExtra(Constants.SUBTITLE, getString(R.string.saketh)).putExtra(Constants.IMG, R.drawable.saketh));
             }
         });
 
-        samarthImageView.setOnClickListener(new View.OnClickListener() {
+        yashImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.graphics)).putExtra(Constants.SUBTITLE, getString(R.string.samarth)).putExtra(Constants.IMG, R.drawable.samarth));
+                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.iOS)).putExtra(Constants.SUBTITLE, getString(R.string.yash)).putExtra(Constants.IMG, R.drawable.yash));
             }
         });
 
-        manishImageView.setOnClickListener(new View.OnClickListener() {
+        avikantImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.backend)).putExtra(Constants.SUBTITLE, getString(R.string.manish)).putExtra(Constants.IMG, R.drawable.manish));
+                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.iOS)).putExtra(Constants.SUBTITLE, getString(R.string.avikant)).putExtra(Constants.IMG, R.drawable.avikant));
+            }
+        });
+
+        sorteImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.co_ordinator)).putExtra(Constants.SUBTITLE, getString(R.string.shubham)).putExtra(Constants.IMG, R.drawable.shubham));
+            }
+        });
+
+        anuraagImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DeveloperActivity.this, DevDetailActivity.class).putExtra(Constants.TITLE, getString(R.string.android)).putExtra(Constants.SUBTITLE, getString(R.string.anuraag)).putExtra(Constants.IMG, R.drawable.anuraag));
             }
         });
     }
@@ -108,3 +108,4 @@ public class DeveloperActivity extends ActionBarActivity {
         shakeDetector.stop();
     }
 }
+

@@ -14,38 +14,38 @@
 
     <ImageView
         android:padding="6dp"
-        android:src="@drawable/tanay"
+        android:src="@drawable/kartik"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/tan_image"
+        android:id="@+id/kartik_image"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:contentDescription="@string/app_name" />
 
     <ImageView
-        android:id="@+id/man_image"
+        android:id="@+id/anuraag_image"
         android:padding="6dp"
         android:layout_above="@id/dev_revels_image_view"
         android:layout_alignLeft="@id/dev_revels_image_view"
-        android:src="@drawable/manish"
+        android:src="@drawable/anuraag"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:contentDescription="@string/app_name" />
 
     <ImageView
-        android:id="@+id/sak_image"
+        android:id="@+id/saketh_image"
         android:padding="6dp"
         android:layout_above="@id/dev_revels_image_view"
         android:layout_alignRight="@id/dev_revels_image_view"
-        android:src="@drawable/saksham"
+        android:src="@drawable/saketh"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:contentDescription="@string/app_name" />
 
     <ImageView
-        android:id="@+id/kar_image"
+        android:id="@+id/yash_image"
         android:padding="6dp"
-        android:src="@drawable/kartik"
+        android:src="@drawable/yash"
         android:layout_below="@id/dev_revels_image_view"
         android:layout_alignLeft="@id/dev_revels_image_view"
         android:layout_width="110dp"
@@ -53,21 +53,21 @@
         android:contentDescription="@string/app_name" />
 
     <ImageView
-        android:id="@+id/shub_image"
+        android:id="@+id/avikant_image"
         android:padding="6dp"
         android:layout_below="@id/dev_revels_image_view"
         android:layout_alignRight="@id/dev_revels_image_view"
-        android:src="@drawable/shubham"
+        android:src="@drawable/avikant"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:contentDescription="@string/app_name" />
 
     <ImageView
-        android:id="@+id/sam_image"
+        android:id="@+id/shubham_image"
         android:padding="6dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/samarth"
+        android:src="@drawable/shubham"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:contentDescription="@string/app_name" />
