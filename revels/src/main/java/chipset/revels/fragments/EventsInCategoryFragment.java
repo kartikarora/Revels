@@ -295,6 +295,7 @@ public class EventsInCategoryFragment extends Fragment {
                     eventDatum.setEvenue(scheduleDatum.getEvenue());
                     eventDatum.setEndtime(scheduleDatum.getEndtime());
                     eventDatum.setRoundno(scheduleDatum.getRoundno());
+                    eventDatum.setDate(scheduleDatum.getDate());
                     eventDatumList.remove(eventDatum);
                     eventDatumList.add(i, eventDatum);
                 } else {
@@ -303,6 +304,7 @@ public class EventsInCategoryFragment extends Fragment {
                     eventDatum.setEvenue("NA");
                     eventDatum.setEndtime("NA");
                     eventDatum.setRoundno("NA");
+                    eventDatum.setDate("NA");
                     eventDatumList.remove(eventDatum);
                     eventDatumList.add(i, eventDatum);
                 }
