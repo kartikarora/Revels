@@ -100,14 +100,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="chipset.revels.activities.MainActivity" />
         </activity>
-        <activity
-            android:name=".activities.ContactActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_contact">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="chipset.revels.activities.MainActivity" />
-        </activity>
 
         <meta-data
             android:name="com.crashlytics.ApiKey"

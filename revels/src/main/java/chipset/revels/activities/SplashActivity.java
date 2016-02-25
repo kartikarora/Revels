@@ -19,6 +19,7 @@ import chipset.potato.Potato;
 import chipset.revels.R;
 import chipset.revels.model.revels.Category;
 import chipset.revels.model.revels.Event;
+import chipset.revels.model.revels.Image;
 import chipset.revels.model.revels.Schedule;
 import chipset.revels.network.APIClient;
 import chipset.revels.resources.Constants;
@@ -280,9 +281,9 @@ public class SplashActivity extends ActionBarActivity {
                 onFail();
             }
         });*/
-        /*Image image = new Image().setData(category.getData().size());*/
+        Image image = new Image().setData(category.getData().size()+1);
         Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.CATEG, new Gson().toJson(category));
-        /*Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.IMAGE, new Gson().toJson(image));*/
+        Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.IMAGE, new Gson().toJson(image));
         startEvents();
     }
 

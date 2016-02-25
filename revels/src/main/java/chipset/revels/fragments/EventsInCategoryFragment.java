@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.nirhart.parallaxscroll.views.ParallaxListView;
 import com.nispok.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ import chipset.revels.adapters.CategoryListAdapter;
 import chipset.revels.model.revels.Category;
 import chipset.revels.model.revels.Event;
 import chipset.revels.model.revels.EventDatum;
+import chipset.revels.model.revels.Image;
 import chipset.revels.model.revels.Schedule;
 import chipset.revels.model.revels.ScheduleDatum;
 import chipset.revels.network.APIClient;
@@ -98,8 +100,8 @@ public class EventsInCategoryFragment extends Fragment {
         animUp = AnimationUtils.loadAnimation(view.getContext(), R.anim.animation_up);
         animDown = AnimationUtils.loadAnimation(view.getContext(), R.anim.animation_down);
 
-        /*Image image = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.IMAGE), Image.class);
-        Picasso.with(view.getContext()).load(image.getImage(position)).into(imageView);*/
+        Image image = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.IMAGE), Image.class);
+        Picasso.with(view.getContext()).load(image.getImage(position)).into(imageView);
         AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250);
         imageView.setBackgroundColor(getResources().getColor(R.color.teal_primary));
         imageView.setLayoutParams(params);

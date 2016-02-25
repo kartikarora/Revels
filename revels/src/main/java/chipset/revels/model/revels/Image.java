@@ -14,23 +14,21 @@ public class Image {
     private int[] images;
 
     public Image setData(int count) {
-        images = new int[count + 1];
+        images = new int[count];
         images[0] = R.mipmap.ic_launcher;
-        images[1] = R.mipmap.ic_launcher;
-        images[2] = R.drawable.anubhuti;
-        images[3] = R.drawable.congizance;
-        images[4] = R.drawable.crescendo;
-        images[5] = R.drawable.dramebaaz;
-        images[6] = R.drawable.eqiq;
-        images[7] = R.drawable.footloose;
-        images[8] = R.drawable.gaming;
-        images[9] = R.drawable.hautecouture;
-        images[10] = R.drawable.kalakriti;
-        images[11] = R.drawable.lensation;
-        images[12] = R.drawable.paradigmshift;
+        images[1] = R.drawable.gaming;
+        images[2] = R.drawable.crescendo;
+        images[3] = R.drawable.footloose;
+        images[4] = R.drawable.dramebaaz;
+        images[5] = R.drawable.omniscience;
+        images[6] = R.drawable.kalakriti;
+        images[7] = R.drawable.hautecouture;
+        images[8] = R.drawable.anubhuti;
+        images[9] = R.drawable.lensation;
+        images[10] = R.drawable.xventure;
+        images[11] = R.drawable.paradigmshift;
+        images[12] = R.drawable.eqiq;
         images[13] = R.drawable.psychus;
-        images[14] = R.drawable.cup;
-        images[15] = R.drawable.xventure;
         return this;
     }
 

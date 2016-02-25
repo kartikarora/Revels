@@ -28,6 +28,6 @@ public class DevDetailActivity extends ActionBarActivity {
 
         titleTextView.setText(getIntent().getStringExtra(Constants.TITLE));
         subtitleTextView.setText(getIntent().getStringExtra(Constants.SUBTITLE));
-        imageView.setImageDrawable(getResources().getDrawable(getIntent().getIntExtra(Constants.IMG, R.drawable.app_icon)));
+        imageView.setImageDrawable(getResources().getDrawable(getIntent().getIntExtra(Constants.IMG, R.mipmap.ic_launcher)));
     }
 }
