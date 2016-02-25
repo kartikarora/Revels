@@ -32,7 +32,7 @@ public class ResultListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return result.getCount();
+        return result.getData().size();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ResultListAdapter extends BaseAdapter {
         }
         ViewHolder viewHolder = (ViewHolder) convertView.getTag();
         ResultDatum resultDatum = getItem(position);
-        String res = "";
+        /*String res = "";
         for (int i = 0; i < resultDatum.getCount(); i++) {
             String pos = resultDatum.getContent().get(i).getPosition();
             if (pos.equals("q"))
@@ -67,9 +67,9 @@ public class ResultListAdapter extends BaseAdapter {
             res += " : ";
             res += resultDatum.getContent().get(i).getDelegate();
             res += "\n";
-        }
-        viewHolder.resultEventTextView.setText(resultDatum.getEvent());
-        viewHolder.resultPositionTextView.setText(res);
+        }*/
+        viewHolder.resultEventTextView.setText(resultDatum.getEventName());
+        viewHolder.resultPositionTextView.setText(resultDatum.getResult());
         return convertView;
     }
 

@@ -39,8 +39,8 @@
     <string name="title_activity_contact">Contact Us</string>
     <string name="action_following">Following</string>
     <string name="action_results">Results</string>
-    <string name="action_register_cultural">Register (Cultural)</string>
-    <string name="action_register_sports">Register (Sports)</string>
+    <string name="action_register">Register</string>
+    <string name="action_register_proshow">Proshow</string>
     <string name="action_contact">Contact Us</string>
     <string name="action_devs">Developers</string>
     <string name="no_results">No results yet!</string>

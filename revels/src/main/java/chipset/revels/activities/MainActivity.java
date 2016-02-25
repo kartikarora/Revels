@@ -138,10 +138,6 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(MainActivity.this, InstaFeedActivity.class));
                 break;
             }
-            case R.id.action_following: {
-                startActivity(new Intent(MainActivity.this, FollowingActivity.class));
-                break;
-            }
             case R.id.action_results: {
                 startActivity(new Intent(MainActivity.this, ResultsActivity.class));
                 break;

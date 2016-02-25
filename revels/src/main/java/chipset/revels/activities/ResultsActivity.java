@@ -47,10 +47,10 @@ public class ResultsActivity extends ActionBarActivity {
 
         mSwipeRefreshLayout.setColorSchemeResources(R.color.teal_primary, R.color.teal_primary_dark);
 
-        APIClient.getRevels().getResults(new Callback<Result>() {
+        APIClient.getResults().getResults(new Callback<Result>() {
             @Override
             public void success(Result result, Response response) {
-                if (result == null || result.getCount() == 0) {
+                if (result == null || result.getData().size() == 0) {
                     setContentView(R.layout.no_resutls);
                 } else {
                     ResultListAdapter adapter = new ResultListAdapter(getApplicationContext(), result);
@@ -79,21 +79,23 @@ public class ResultsActivity extends ActionBarActivity {
             @Override
             public void onRefresh() {
                 mSwipeRefreshLayout.setRefreshing(true);
-                APIClient.getRevels().getResults(new Callback<Result>() {
+                APIClient.getResults().getResults(new Callback<Result>() {
                     @Override
                     public void success(Result result, Response response) {
-
-                        ResultListAdapter adapter = new ResultListAdapter(getApplicationContext(), result);
-                        adapter.notifyDataSetChanged();
-                        resultsListView.setAdapter(adapter);
-                        resultsListView.setVisibility(View.VISIBLE);
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        if (result == null || result.getData().size() == 0) {
+                            setContentView(R.layout.no_resutls);
+                        } else {
+                            ResultListAdapter adapter = new ResultListAdapter(getApplicationContext(), result);
+                            adapter.notifyDataSetChanged();
+                            resultsListView.setAdapter(adapter);
+                            resultsListView.setVisibility(View.VISIBLE);
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         progressBar.setVisibility(View.GONE);
-                        mSwipeRefreshLayout.setRefreshing(false);
                         setContentView(R.layout.no_connection_layout);
                         Button retryButton = (Button) findViewById(R.id.retry_button);
                         retryButton.setOnClickListener(new View.OnClickListener() {

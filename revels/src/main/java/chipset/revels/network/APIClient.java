@@ -21,7 +21,7 @@ import retrofit.http.Query;
 public class APIClient {
     private static DataInterface dataInterface = null;
     private static InstaFeedInterface instaFeedInterface = null;
-
+    private static ResultsInterface resultsInterface = null;
     public static DataInterface getRevels() {
         if (dataInterface == null) {
             String URL_API = "http://mitrevels.in/apidata";
@@ -44,6 +44,17 @@ public class APIClient {
             instaFeedInterface = restAdapter.create(InstaFeedInterface.class);
         }
         return instaFeedInterface;
+    }
+    public static ResultsInterface getResults() {
+        if (resultsInterface == null) {
+            String URL_RESULTS = "http://results.mitportals.in/public";
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setEndpoint(URL_RESULTS)
+                    .build();
+
+            resultsInterface = restAdapter.create(ResultsInterface.class);
+        }
+        return resultsInterface;
     }
 
     public interface DataInterface {
@@ -72,5 +83,10 @@ public class APIClient {
     public interface InstaFeedInterface {
         @GET(Constants.INSTA_API_ENDPOINT)
         void getFeed(Callback<InstaFeed> instaFeedCallback);
+    }
+
+    public interface ResultsInterface{
+        @GET("/results")
+        void getResults(Callback<Result> resultCallback);
     }
 }

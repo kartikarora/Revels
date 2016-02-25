@@ -10,108 +10,69 @@ package chipset.revels.model.revels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ResultDatum {
 
+    @SerializedName("eventName")
     @Expose
-    private String event;
+    private String eventName;
+    @SerializedName("categoryName")
     @Expose
-    private String category;
+    private String categoryName;
+    @SerializedName("result")
     @Expose
-    private List<Content> content = new ArrayList<>();
-    @SerializedName("event_code")
-    @Expose
-    private String eventCode;
-    @SerializedName("last_updated")
-    @Expose
-    private String lastUpdated;
-    @Expose
-    private int count;
+    private String result;
 
     /**
-     * @return The event
+     *
+     * @return
+     * The eventName
      */
-    public String getEvent() {
-        return event;
+    public String getEventName() {
+        return eventName;
     }
 
     /**
-     * @param event The event
+     *
+     * @param eventName
+     * The eventName
      */
-    public void setEvent(String event) {
-        this.event = event;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     /**
-     * @return The category
+     *
+     * @return
+     * The categoryName
      */
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     /**
-     * @param category The category
+     *
+     * @param categoryName
+     * The categoryName
      */
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     /**
-     * @return The content
+     *
+     * @return
+     * The result
      */
-    public List<Content> getContent() {
-        return content;
+    public String getResult() {
+        return result;
     }
 
     /**
-     * @param content The content
+     *
+     * @param result
+     * The result
      */
-    public void setContent(List<Content> content) {
-        this.content = content;
+    public void setResult(String result) {
+        this.result = result;
     }
-
-    /**
-     * @return The eventCode
-     */
-    public String getEventCode() {
-        return eventCode;
-    }
-
-    /**
-     * @param eventCode The event_code
-     */
-    public void setEventCode(String eventCode) {
-        this.eventCode = eventCode;
-    }
-
-    /**
-     * @return The lastUpdated
-     */
-    public String getLastUpdated() {
-        return lastUpdated;
-    }
-
-    /**
-     * @param lastUpdated The last_updated
-     */
-    public void setLastUpdated(String lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-
-    /**
-     * @return The count
-     */
-    public int getCount() {
-        return count;
-    }
-
-    /**
-     * @param count The count
-     */
-    public void setCount(int count) {
-        this.count = count;
-    }
-
 }
