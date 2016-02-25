@@ -19,38 +19,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
-    <LinearLayout
-        android:id="@+id/follow_layout"
-        android:padding="16dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:textSize="20sp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/text_follow"
-            android:gravity="center"
-            android:textColor="@color/teal_primary"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7" />
-
-        <CheckBox
-            android:id="@+id/event_follow_checkbox"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3" />
-    </LinearLayout>
-
     <ScrollView
         android:scrollbarThumbVertical="@drawable/scroll_color_teal"
         android:id="@+id/event_detail_scroll_view"
         android:layout_below="@id/event_name_dialog_text_view"
-        android:layout_above="@id/follow_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

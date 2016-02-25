@@ -180,7 +180,8 @@ public class EventsInCategoryFragment extends Fragment {
                     }
                 }
             });
-        } else {/*
+        } else {
+            /*
             APIClient.getRevels().getEventFromEndPoint(category.getData().get(position - 1).getCid(), new Callback<Event>() {
                 @Override
                 public void success(Event event, Response response) {
@@ -214,6 +215,21 @@ public class EventsInCategoryFragment extends Fragment {
                     }
                 }
             });*/
+            Event event = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getActivity(), Constants.EVENT), Event.class);
+            Event event1 = new Event();
+            ArrayList<EventDatum> eventData = new ArrayList<>();
+            for (EventDatum eventDatum : event.getData()) {
+                if (eventDatum.getCid().equals(category.getData().get(position - 1).getCid()))
+                    eventData.add(eventDatum);
+            }
+            event1.setCount(eventData.size());
+            event1.setData(eventData);
+            try {
+                segregateAndUpdate(view, event1);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
         dayOneButton.setOnClickListener(new View.OnClickListener() {
@@ -267,7 +283,7 @@ public class EventsInCategoryFragment extends Fragment {
     private void segregateEvents(Event event) {
         List<EventDatum> eventDatumList = event.getData();
         Schedule schedule = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getActivity(), Constants.SCHEDULE), Schedule.class);
-        Log.d("schedule",schedule.toString());
+        Log.d("schedule", schedule.toString());
         for (ScheduleDatum scheduleDatum : schedule.getData()) {
             for (int i = 0; i < eventDatumList.size(); i++) {
                 EventDatum eventDatum = eventDatumList.get(i);
@@ -278,20 +294,20 @@ public class EventsInCategoryFragment extends Fragment {
                     eventDatum.setEndtime(scheduleDatum.getEndtime());
                     eventDatum.setRoundno(scheduleDatum.getRoundno());
                     eventDatumList.remove(eventDatum);
-                    eventDatumList.add(i,eventDatum);
-                }else {
+                    eventDatumList.add(i, eventDatum);
+                } else {
                     eventDatum.setDay("1");
                     eventDatum.setStrttime("NA");
                     eventDatum.setEvenue("NA");
                     eventDatum.setEndtime("NA");
                     eventDatum.setRoundno("NA");
                     eventDatumList.remove(eventDatum);
-                    eventDatumList.add(i,eventDatum);
+                    eventDatumList.add(i, eventDatum);
                 }
             }
         }
-        for(EventDatum eventDatum: eventDatumList){
-            Log.d("event",eventDatum.getDay());
+        for (EventDatum eventDatum : eventDatumList) {
+            Log.d("event", eventDatum.getDay());
         }
         for (int i = 0; i < eventDatumList.size(); i++) {
             int day = Integer.parseInt(eventDatumList.get(i).getDay());

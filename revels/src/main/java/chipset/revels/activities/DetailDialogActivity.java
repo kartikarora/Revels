@@ -2,14 +2,11 @@ package chipset.revels.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import chipset.potato.Potato;
 import chipset.revels.R;
-import chipset.revels.model.revels.Event;
 import chipset.revels.model.revels.EventDatum;
 import chipset.revels.resources.Constants;
 
@@ -28,45 +25,11 @@ public class DetailDialogActivity extends ActionBarActivity {
 
         TextView eventDetailDialogTextView = (TextView) findViewById(R.id.event_detail_dialog_text_view);
         TextView eventNameDialogTextView = (TextView) findViewById(R.id.event_name_dialog_text_view);
-        CheckBox eventFollowCheckBox = (CheckBox) findViewById(R.id.event_follow_checkbox);
 
-        final Event followingEvent = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getApplicationContext(), Constants.FOLLOWING), Event.class);
         final EventDatum eventDatum = new Gson().fromJson(getIntent().getStringExtra(Constants.EVENT_DATA), EventDatum.class);
 
         eventDetailDialogTextView.setText(eventDatum.getEdesc());
         eventNameDialogTextView.setText(eventDatum.getEname());
 
-        for (int i = 0; i < followingEvent.getData().size(); i++) {
-            if (followingEvent.getData().get(i).getEname().equals(eventDatum.getEname())) {
-                eventFollowCheckBox.setChecked(true);
-                break;
-            } else eventFollowCheckBox.setChecked(false);
-        }
-
-        /*eventFollowCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    followingEvent.getData().add(eventDatum);
-                    followingEvent.setCount(followingEvent.getCount() + 1);
-                    Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.FOLLOWING, new Gson().toJson(followingEvent));
-                    Toast t = Toast.makeText(getApplicationContext(), eventDatum.getEvent() + " added to following list", Toast.LENGTH_SHORT);
-                    t.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0);
-                    t.show();
-                } else {
-                    for (int i = 0; i < followingEvent.getCount(); i++) {
-                        if (eventDatum.getEvent().equals(followingEvent.getData().get(i).getEvent())) {
-                            followingEvent.getData().remove(i);
-                            followingEvent.setCount(followingEvent.getCount() - 1);
-                            Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.FOLLOWING, new Gson().toJson(followingEvent));
-                            break;
-                        }
-                    }
-                    Toast t = Toast.makeText(getApplicationContext(), eventDatum.getEvent() + " removed from following list", Toast.LENGTH_SHORT);
-                    t.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0);
-                    t.show();
-                }
-            }
-        });*/
     }
 }
