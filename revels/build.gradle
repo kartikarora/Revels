@@ -17,7 +17,7 @@ repositories {
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "23.0.1"
 
     def versionMajor = 1
     def versionMinor = 0

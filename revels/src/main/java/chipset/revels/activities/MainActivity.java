@@ -154,10 +154,6 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_REG_SPO));
                 break;
             }
-            case R.id.action_contact: {
-                startActivity(new Intent(MainActivity.this, ContactActivity.class));
-                break;
-            }
             case R.id.action_devs: {
                 startActivity(new Intent(MainActivity.this, DeveloperActivity.class));
                 break;
