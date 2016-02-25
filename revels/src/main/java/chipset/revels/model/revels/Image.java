@@ -15,8 +15,8 @@ public class Image {
 
     public Image setData(int count) {
         images = new int[count + 1];
-        images[0] = R.drawable.app_icon;
-        images[1] = R.drawable.app_icon;
+        images[0] = R.mipmap.ic_launcher;
+        images[1] = R.mipmap.ic_launcher;
         images[2] = R.drawable.anubhuti;
         images[3] = R.drawable.congizance;
         images[4] = R.drawable.crescendo;
@@ -26,7 +26,7 @@ public class Image {
         images[8] = R.drawable.gaming;
         images[9] = R.drawable.hautecouture;
         images[10] = R.drawable.kalakriti;
-        images[11] = R.drawable.kodachrome;
+        images[11] = R.drawable.lensation;
         images[12] = R.drawable.paradigmshift;
         images[13] = R.drawable.psychus;
         images[14] = R.drawable.cup;
