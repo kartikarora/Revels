@@ -48,7 +48,7 @@ public class SplashActivity extends ActionBarActivity {
     Animation bounceAnimation, moveRightToLeftAnimation, moveRightToLeftAnimationTwo, zoomInAnimation3, zoomInAnimation4, zoomInAnimation5, zoomInAnimation6, fadeInAnimation;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
@@ -207,8 +207,19 @@ public class SplashActivity extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)) {
+                        if (Potato.potate().getUtils().isInternetConnected(getApplicationContext())) {
                             startLoad();
+                        } else if (Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)) {
+                            setContentView(R.layout.no_connection_layout);
+                            Button retryButton = (Button) findViewById(R.id.retry_button);
+                            retryButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if(Potato.potate().getUtils().isInternetConnected(getApplicationContext())){
+                                        onCreate(savedInstanceState);
+                                    }
+                                }
+                            });
                         } else {
                             startActivity(new Intent(SplashActivity.this, MainActivity.class));
                             finish();
@@ -281,7 +292,7 @@ public class SplashActivity extends ActionBarActivity {
                 onFail();
             }
         });*/
-        Image image = new Image().setData(category.getData().size()+1);
+        Image image = new Image().setData(category.getData().size() + 1);
         Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.CATEG, new Gson().toJson(category));
         Potato.potate().getPreferences().putSharedPreference(getApplicationContext(), Constants.IMAGE, new Gson().toJson(image));
         startEvents();
@@ -302,7 +313,8 @@ public class SplashActivity extends ActionBarActivity {
             }
         });
     }
-    public void getSchedule(){
+
+    public void getSchedule() {
         APIClient.getRevels().getSchedule(new Callback<Schedule>() {
             @Override
             public void success(Schedule schedule, Response response) {
@@ -312,11 +324,12 @@ public class SplashActivity extends ActionBarActivity {
 
             @Override
             public void failure(RetrofitError error) {
-            error.printStackTrace();
+                error.printStackTrace();
                 onFail();
             }
         });
     }
+
     public void onFail() {
         setContentView(R.layout.no_connection_layout);
         Button retryButton = (Button) findViewById(R.id.retry_button);
@@ -329,6 +342,10 @@ public class SplashActivity extends ActionBarActivity {
     }
 
     public void onSuccess() {
+        if(!Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)){
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        }
         gettingReadyProgressBar.setVisibility(View.INVISIBLE);
         gettingReadyProgressBar.startAnimation(fadeOutAnimation);
         gettingReadyImageView.setVisibility(View.VISIBLE);
