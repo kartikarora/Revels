@@ -22,29 +22,21 @@
     <string name="title_activity_developer">The Devs</string>
     <string name="hello_world">Hello world!</string>
     <string name="team_lead">Team Lead</string>
-    <string name="tanay">Tanay Agrawal</string>
-    <string name="backend"><![CDATA[Backend & API]]></string>
-    <string name="manish">Manish Shetty</string>
-    <string name="graphics">Graphics</string>
-    <string name="samarth">Samarth Jain</string>
-    <string name="android">Android Developer</string>
     <string name="kartik">Kartik Arora</string>
+    <string name="anuraag">Anuraag Baishya</string>
+    <string name="yash">Yash Kumar Lal</string>
+    <string name="co_ordinator">Co-ordinator</string>
+    <string name="android">Android Developer</string>
+    <string name="avikant">Avikant Saini</string>
     <string name="iOS">iOS Developer</string>
     <string name="shubham">Shubham Sorte</string>
-    <string name="winphone">Windows Phone Developer</string>
-    <string name="saksham">Saksham Khanna</string>
+    <string name="saketh">Saketh Kaparthi</string>
     <string name="title_activity_web_view">Register</string>
     <string name="title_activity_lug">LUG Manipal</string>
     <string name="lug_manipal">LUG Manipal</string>
     <string name="shake">Shake to go back</string>
     <string name="no_events_on_this_day">No events on this day!</string>
     <string name="title_activity_contact">Contact Us</string>
-    <string name="sanika">Sanika Kapale</string>
-    <string name="sports_sec">Sports Secretary</string>
-    <string name="ravi">Ravi Shankar</string>
-    <string name="cul_sec">Cultural Secretary</string>
-    <string name="satyam">Satyam Sinha</string>
-    <string name="aditi">Aditi Lath</string>
     <string name="action_following">Following</string>
     <string name="action_results">Results</string>
     <string name="action_register_cultural">Register (Cultural)</string>
@@ -55,3 +47,4 @@
     <string name="action_image_save">Save Image</string>
     <string name="action_image_share">Share</string>
 </resources>
+
