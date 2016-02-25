@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Revels\'15</string>
+    <string name="app_name">Revels\'16</string>
     <string name="action_nav">Navigation</string>
     <string name="action_instagram">InstaFeed</string>
     <string name="title_insta_feed_activity">#revels15</string>
