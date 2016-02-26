@@ -36,204 +36,46 @@ import retrofit.client.Response;
 
 public class SplashActivity extends ActionBarActivity {
 
-    ImageView das2, das3, das4, das5, das6, das1, revels, volatus;
+      TextView gettingReadyTextView, continueTextView;
+      ProgressBar gettingReadyProgressBar;
+      Button gettingReadyButton;
+      ImageView gettingReadyImageView;
+      Animation fadeInAnimationSecond;
+      Animation fadeOutAnimation;
 
-    TextView gettingReadyTextView, continueTextView;
-    ProgressBar gettingReadyProgressBar;
-    Button gettingReadyButton;
-    ImageView gettingReadyImageView;
-    Animation fadeInAnimationSecond;
-    Animation fadeOutAnimation;
-
-    Animation bounceAnimation, moveRightToLeftAnimation, moveRightToLeftAnimationTwo, zoomInAnimation3, zoomInAnimation4, zoomInAnimation5, zoomInAnimation6, fadeInAnimation;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash_new);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (Potato.potate().getUtils().isInternetConnected(getApplicationContext())) {
+                    startLoad();
+                } else if (Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)) {
+                    setContentView(R.layout.no_connection_layout);
+                    Button retryButton = (Button) findViewById(R.id.retry_button);
+                    retryButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (Potato.potate().getUtils().isInternetConnected(getApplicationContext())) {
+                                onCreate(savedInstanceState);
+                            }
+                        }
+                    });
+                } else {
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    finish();
+                }
+            }
+        }, 2000);
 
-        das2 = (ImageView) findViewById(R.id.das2_image);
-        das3 = (ImageView) findViewById(R.id.das3_image);
-        das4 = (ImageView) findViewById(R.id.das4_image);
-        das5 = (ImageView) findViewById(R.id.das5_image);
-        das6 = (ImageView) findViewById(R.id.das6_image);
-        das1 = (ImageView) findViewById(R.id.das1_image);
-        revels = (ImageView) findViewById(R.id.revels_image);
-        volatus = (ImageView) findViewById(R.id.volatus_image);
 
-
-        bounceAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_bounce);
-        moveRightToLeftAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_move_right_to_left);
-        moveRightToLeftAnimationTwo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_move_right_to_left);
-        zoomInAnimation3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_zoom_in);
-        zoomInAnimation4 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_zoom_in);
-        zoomInAnimation5 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_zoom_in);
-        zoomInAnimation6 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_zoom_in);
-        fadeInAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_fade_in);
         fadeInAnimationSecond = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_fade_in);
         fadeOutAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_fade_out);
-
-        das3.startAnimation(zoomInAnimation3);
-
-        zoomInAnimation3.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        das4.setVisibility(View.VISIBLE);
-                        das4.startAnimation(zoomInAnimation4);
-                    }
-                }, 200);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        zoomInAnimation4.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        das5.setVisibility(View.VISIBLE);
-                        das5.startAnimation(zoomInAnimation5);
-                    }
-                }, 150);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        zoomInAnimation5.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        das6.setVisibility(View.VISIBLE);
-                        das6.startAnimation(zoomInAnimation6);
-                    }
-                }, 150);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        zoomInAnimation6.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                das2.setVisibility(View.VISIBLE);
-                das2.startAnimation(bounceAnimation);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        bounceAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                das1.setVisibility(View.VISIBLE);
-                das1.startAnimation(moveRightToLeftAnimation);
-                volatus.setVisibility(View.VISIBLE);
-                volatus.startAnimation(moveRightToLeftAnimationTwo);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-        });
-
-        moveRightToLeftAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                revels.setVisibility(View.VISIBLE);
-                revels.startAnimation(fadeInAnimation);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        fadeInAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (Potato.potate().getUtils().isInternetConnected(getApplicationContext())) {
-                            startLoad();
-                        } else if (Potato.potate().getPreferences().getSharedPreferenceBoolean(getApplicationContext(), Constants.FIRST_RUN)) {
-                            setContentView(R.layout.no_connection_layout);
-                            Button retryButton = (Button) findViewById(R.id.retry_button);
-                            retryButton.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if(Potato.potate().getUtils().isInternetConnected(getApplicationContext())){
-                                        onCreate(savedInstanceState);
-                                    }
-                                }
-                            });
-                        } else {
-                            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-                }, 1000);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-        });
     }
+
 
     public void startLoad() {
         setContentView(R.layout.getting_ready_layout);
