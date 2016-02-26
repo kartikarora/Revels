@@ -103,7 +103,7 @@ public class EventsInCategoryFragment extends Fragment {
         Image image = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(view.getContext(), Constants.IMAGE), Image.class);
         Picasso.with(view.getContext()).load(image.getImage(position)).into(imageView);
         AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 250);
-        imageView.setBackgroundColor(getResources().getColor(R.color.teal_primary));
+        imageView.setBackground(getResources().getDrawable(R.drawable.card));
         imageView.setLayoutParams(params);
         eventListView.addParallaxedHeaderView(imageView);
         return view;
