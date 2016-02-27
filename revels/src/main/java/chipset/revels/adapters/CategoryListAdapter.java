@@ -66,8 +66,8 @@ public class CategoryListAdapter extends BaseAdapter {
         viewHolder.eventEndTextView.setText("Ends at: " + eventDatum.getEndtime());
         viewHolder.eventDateTextView.setText("On " + eventDatum.getDate());
         viewHolder.eventLocationTextView.setText("At/In: " + eventDatum.getEvenue());
-    /*    viewHolder.eventContactTextView.setText(eventDatum.getContact());
-        viewHolder.eventCategoryTextView.setText(eventDatum.getCategory());*/
+        //viewHolder.eventContactTextView.setText(eventDatum.getContact());
+        viewHolder.eventCategoryTextView.setText(eventDatum.getCname());
 
         if (categoryPosition != 0) viewHolder.eventCategoryTextView.setVisibility(View.GONE);
 

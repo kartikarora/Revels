@@ -113,6 +113,7 @@
             android:textSize="17sp"
             android:gravity="center_vertical|left|start"
             tools:text="Test Text"
+            android:visibility="gone"
             android:drawablePadding="15dp"
             android:drawableStart="@drawable/ic_contact"
             android:drawableLeft="@drawable/ic_contact"

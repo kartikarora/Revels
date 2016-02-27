@@ -21,7 +21,7 @@
         android:contentDescription="@string/app_name" />
 
     <TextView
-        android:textColor="@color/teal_primary"
+        android:textColor="@color/teal_primary_text"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/app_setup"
@@ -44,7 +44,7 @@
         android:id="@+id/continue_text_view"
         android:visibility="gone"
         android:text="@string/cont"
-        android:textColor="@color/teal_primary"
+        android:textColor="@color/teal_primary_text"
         android:textSize="20sp"
         android:padding="6dp"
         android:layout_centerHorizontal="true"

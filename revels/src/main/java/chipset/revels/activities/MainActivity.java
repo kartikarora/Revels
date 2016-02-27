@@ -142,12 +142,12 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(MainActivity.this, ResultsActivity.class));
                 break;
             }
-            case R.id.action_register_cultural: {
-                startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_REG_CUL));
+            case R.id.action_register: {
+                startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_REG));
                 break;
             }
-            case R.id.action_register_sports: {
-                startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_REG_SPO));
+            case R.id.action_proshow: {
+                startActivity(new Intent(MainActivity.this, WebViewActivity.class).putExtra("URL", Constants.URL_PROSHOW));
                 break;
             }
             case R.id.action_devs: {

@@ -26,8 +26,8 @@ public class Constants {
     public static String SUBTITLE = "subtitle";
     public static String IMG = "img";
 
-    public static String URL_REG_SPO = "http://mitrevels.in/register/sports/index.php";
-    public static String URL_REG_CUL = "http://mitrevels.in/register/cultural/index.php";
+    public static String URL_REG = "http://register.mitportals.in";
+    public static String URL_PROSHOW = "http://proshow.mitportals.in";
     public static String URL_LUG_FB = "https://www.facebook.com/LUGManipal";
     public static String URL_LUG_GITHUB = "https://github.com/LUGM/";
     public static final String INSTA_API_ENDPOINT="/v1/tags/revels16/media/recent?client_id=fd6b3100174e42d7aa7d546574e01c76";
