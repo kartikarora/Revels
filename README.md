@@ -1,6 +1,6 @@
-# Revels'15
+# Revels'16
 
-Official android app for the annual cultural fest "Revels'15" of Manipal Institute of Technology, Manipal, India.
+Official android app for the annual cultural fest "Revels'16" of Manipal Institute of Technology, Manipal, India.
 
 Features:
 ==
@@ -8,7 +8,7 @@ Features:
 * Event info available available even in offline mode
 * Live Result updates
 * Registrations
-* Follow #revels15 via Instagram
+* Follow #revels16 via Instagram
 
 The app uses:
 ==
@@ -21,9 +21,9 @@ The app uses:
 * [Seismic](https://github.com/square/seismic) library by [Square Open Source](http://square.github.io/)
 * [ParallaxScrollView](https://github.com/nirhart/ParallaxScroll) by [Nir Hartmann](https://github.com/nirhart)
 * [Fabric](https://fabric.io/) & [ACRA](https://github.com/ACRA/acra) for crash analytics
-* [Potato Library](https://github.com/chipset95/Potato-Library) by [me](https://github.com/chipset95/)
-* Instagram API for #revels15
+* [Potato Library](https://github.com/kartikarora/Potato-Library) by [me](http://kartikarora.github.io)
+* Instagram API for #revels16
 * ListView with CustomListViewAdapters
 * WebView to display some content from [Revels website](http://www.mitrevels.in)
 
-[![Get the app from playstore](https://developer.android.com/images/brand/en_app_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=chipset.revels)
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png)](https://play.google.com/store/apps/details?id=chipset.revels)
