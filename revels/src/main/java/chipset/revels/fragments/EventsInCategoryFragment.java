@@ -286,9 +286,20 @@ public class EventsInCategoryFragment extends Fragment {
         List<EventDatum> eventDatumList = event.getData();
         Schedule schedule = new Gson().fromJson(Potato.potate().getPreferences().getSharedPreferenceString(getActivity(), Constants.SCHEDULE), Schedule.class);
         Log.d("schedule", schedule.toString());
-        for (ScheduleDatum scheduleDatum : schedule.getData()) {
-            for (int i = 0; i < eventDatumList.size(); i++) {
-                EventDatum eventDatum = eventDatumList.get(i);
+        for (int i = 0; i < eventDatumList.size(); i++) {
+            EventDatum eventDatum = eventDatumList.get(i);
+            eventDatum.setDay("1");
+            eventDatum.setStrttime("NA");
+            eventDatum.setEvenue("NA");
+            eventDatum.setEndtime("NA");
+            eventDatum.setRoundno("NA");
+            eventDatum.setDate("NA");
+            eventDatumList.remove(eventDatum);
+            eventDatumList.add(i, eventDatum);
+        }
+        for (int i = 0; i < eventDatumList.size(); i++) {
+            EventDatum eventDatum = eventDatumList.get(i);
+            for (ScheduleDatum scheduleDatum : schedule.getData()) {
                 if (eventDatum.getEid().equals(scheduleDatum.getEid())) {
                     eventDatum.setDay(scheduleDatum.getDay());
                     eventDatum.setStrttime(scheduleDatum.getStrttime());
@@ -296,15 +307,6 @@ public class EventsInCategoryFragment extends Fragment {
                     eventDatum.setEndtime(scheduleDatum.getEndtime());
                     eventDatum.setRoundno(scheduleDatum.getRoundno());
                     eventDatum.setDate(scheduleDatum.getDate());
-                    eventDatumList.remove(eventDatum);
-                    eventDatumList.add(i, eventDatum);
-                } else {
-                    eventDatum.setDay("1");
-                    eventDatum.setStrttime("NA");
-                    eventDatum.setEvenue("NA");
-                    eventDatum.setEndtime("NA");
-                    eventDatum.setRoundno("NA");
-                    eventDatum.setDate("NA");
                     eventDatumList.remove(eventDatum);
                     eventDatumList.add(i, eventDatum);
                 }
