@@ -17,12 +17,12 @@ repositories {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     def versionMajor = 2
     def versionMinor = 0
     def versionPatch = 0
-    def versionBuild = 270216
+    def versionBuild = 278800
     def versionId = 42 * (versionMajor * 40 + versionMinor * 20 + versionPatch * 10 + versionBuild * 5)
     defaultConfig {
         applicationId "chipset.revels"
@@ -41,7 +41,7 @@ android {
 
 dependencies {
     compile 'com.squareup.picasso:picasso:2.5.0'
-    compile 'com.android.support:cardview-v7:23.2.0'
+    compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.nispok:snackbar:2.9.0'
