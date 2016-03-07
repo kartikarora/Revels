@@ -154,6 +154,10 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(MainActivity.this, DeveloperActivity.class));
                 break;
             }
+            case R.id.action_notifications:{
+                startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
+                break;
+            }
         }
         return super.onOptionsItemSelected(item);
     }

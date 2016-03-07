@@ -43,8 +43,11 @@
     <string name="action_register_proshow">Proshow</string>
     <string name="action_contact">Contact Us</string>
     <string name="action_devs">Developers</string>
+    <string name="action_notifications">Notifications</string>
     <string name="no_results">No results yet!</string>
     <string name="action_image_save">Save Image</string>
     <string name="action_image_share">Share</string>
+    <string name="parse_app_id">b4ySAS7cIdzpkfG78S61gsgXGnmejk7wC3VO4nOz</string>
+    <string name="parse_client_key">o0U4wRrAgquQXj96F4fTx1C2LxUfyM3IobMJzyA0</string>
 </resources>
 

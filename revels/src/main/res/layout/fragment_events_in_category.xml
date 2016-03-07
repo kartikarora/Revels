@@ -19,7 +19,8 @@
         android:divider="@android:color/transparent"
         android:id="@+id/event_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"/>
 
     <LinearLayout
         android:id="@+id/button_linear_layout"

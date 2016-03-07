@@ -22,4 +22,8 @@
         android:id="@+id/action_devs"
         app:showAsAction="never"
         android:title="@string/action_devs" />
+    <item
+        android:id="@+id/action_notifications"
+        app:showAsAction="never"
+        android:title="@string/action_notifications"/>
 </menu>
