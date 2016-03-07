@@ -68,7 +68,7 @@ public class CategoryListAdapter extends BaseAdapter {
         viewHolder.eventLocationTextView.setText("At/In: " + eventDatum.getEvenue());
         //viewHolder.eventContactTextView.setText(eventDatum.getContact());
         viewHolder.eventCategoryTextView.setText(eventDatum.getCname());
-
+        viewHolder.eventRoundTextView.setText("Round: " + eventDatum.getRoundno());
         if (categoryPosition != 0) viewHolder.eventCategoryTextView.setVisibility(View.GONE);
 
         /*viewHolder.eventContactTextView.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class CategoryListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView eventNameTextView, eventStartTextView, eventEndTextView, eventLocationTextView, eventDateTextView, eventCategoryTextView, eventContactTextView;
+        TextView eventNameTextView, eventStartTextView, eventEndTextView, eventLocationTextView, eventDateTextView, eventCategoryTextView, eventContactTextView, eventRoundTextView;
 
         public ViewHolder(View view) {
             eventNameTextView = (TextView) view.findViewById(R.id.event_name_text_view);
@@ -109,6 +109,7 @@ public class CategoryListAdapter extends BaseAdapter {
             eventDateTextView = (TextView) view.findViewById(R.id.event_date_text_view);
             eventContactTextView = (TextView) view.findViewById(R.id.event_contact_text_view);
             eventCategoryTextView = (TextView) view.findViewById(R.id.event_category_text_view);
+            eventRoundTextView = (TextView) view.findViewById(R.id.event_round_text_view);
         }
     }
 }

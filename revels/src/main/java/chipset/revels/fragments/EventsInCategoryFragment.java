@@ -297,45 +297,58 @@ public class EventsInCategoryFragment extends Fragment {
             eventDatumList.remove(eventDatum);
             eventDatumList.add(i, eventDatum);
         }
+        ArrayList<EventDatum> eventData = new ArrayList<>();
         for (int i = 0; i < eventDatumList.size(); i++) {
             EventDatum eventDatum = eventDatumList.get(i);
             for (ScheduleDatum scheduleDatum : schedule.getData()) {
                 if (eventDatum.getEid().equals(scheduleDatum.getEid())) {
-                    eventDatum.setDay(scheduleDatum.getDay());
-                    eventDatum.setStrttime(scheduleDatum.getStrttime());
-                    eventDatum.setEvenue(scheduleDatum.getEvenue());
-                    eventDatum.setEndtime(scheduleDatum.getEndtime());
-                    eventDatum.setRoundno(scheduleDatum.getRoundno());
-                    eventDatum.setDate(scheduleDatum.getDate());
-                    eventDatumList.remove(eventDatum);
-                    eventDatumList.add(i, eventDatum);
+                    EventDatum eventDatum1 = new EventDatum();
+                    eventDatum1.setEvenue(eventDatum.getEvenue());
+                    eventDatum1.setEname(eventDatum.getEname());
+                    eventDatum1.setEid(eventDatum.getEid());
+                    eventDatum1.setEdesc(eventDatum.getEdesc());
+                    eventDatum1.setRoundno(eventDatum.getRoundno());
+                    eventDatum1.setCid(eventDatum.getCid());
+                    eventDatum1.setCname(eventDatum.getCname());
+                    eventDatum1.setDay(scheduleDatum.getDay());
+                    eventDatum1.setStrttime(scheduleDatum.getStrttime());
+                    eventDatum1.setEvenue(scheduleDatum.getEvenue());
+                    eventDatum1.setEndtime(scheduleDatum.getEndtime());
+                    eventDatum1.setRoundno(scheduleDatum.getRoundno());
+                    eventDatum1.setDate(scheduleDatum.getDate());
+                    /*eventDatumList.remove(eventDatum);
+                    eventDatumList.add(eventDatum);*/
+                    eventData.add(eventDatum1);
                 }
             }
         }
-        for (EventDatum eventDatum : eventDatumList) {
+        for (EventDatum eventDatum : eventData) {
             Log.d("event name", eventDatum.getEname());
+            Log.d("event day", eventDatum.getDay());
         }
-        for (int i = 0; i < eventDatumList.size(); i++) {
-            int day = Integer.parseInt(eventDatumList.get(i).getDay());
+        for (EventDatum eventDatum : eventData) {
+            int day = Integer.parseInt(eventDatum.getDay());
             switch (day) {
                 case 1: {
-                    eventOneList.add(eventDatumList.get(i));
+                    eventOneList.add(eventDatum);
                     break;
                 }
                 case 2: {
-                    eventTwoList.add(eventDatumList.get(i));
+                    eventTwoList.add(eventDatum);
                     break;
                 }
                 case 3: {
-                    eventThreeList.add(eventDatumList.get(i));
+                    eventThreeList.add(eventDatum);
                     break;
                 }
                 case 4: {
-                    eventFourList.add(eventDatumList.get(i));
+                    eventFourList.add(eventDatum);
                     break;
                 }
             }
         }
+        eventDatumList.clear();
+        eventDatumList.addAll(eventData);
         eventOne.setData(eventOneList);
         eventOne.setCount(eventOneList.size());
         eventTwo.setData(eventTwoList);
