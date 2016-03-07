@@ -314,7 +314,6 @@ public class EventsInCategoryFragment extends Fragment {
         }
         for (EventDatum eventDatum : eventDatumList) {
             Log.d("event name", eventDatum.getEname());
-            Log.d("event category", eventDatum.getCname());
         }
         for (int i = 0; i < eventDatumList.size(); i++) {
             int day = Integer.parseInt(eventDatumList.get(i).getDay());

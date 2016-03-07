@@ -32,7 +32,7 @@ public class NotificationsActivity extends ActionBarActivity {
         final ListView listView = (ListView) findViewById(R.id.notifications_list_view);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Notifications");
         if (Potato.potate().getUtils().isInternetConnected(this)) {
-            final ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+            final ProgressDialog progressDialog = new ProgressDialog(NotificationsActivity.this);
             progressDialog.setMessage("Loading...");
             progressDialog.show();
             query.findInBackground(new FindCallback<ParseObject>() {
