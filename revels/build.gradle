@@ -21,8 +21,8 @@ android {
 
     def versionMajor = 2
     def versionMinor = 0
-    def versionPatch = 0
-    def versionBuild = 278800
+    def versionPatch = 2
+    def versionBuild = 278820
     def versionId = 42 * (versionMajor * 40 + versionMinor * 20 + versionPatch * 10 + versionBuild * 5)
     defaultConfig {
         applicationId "chipset.revels"
